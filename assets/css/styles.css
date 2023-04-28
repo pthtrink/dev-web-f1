@@ -1,5 +1,5 @@
 .bgimage {
-   background-image: url('../images/panoramica1.jpg');
+   background-image: url('../images/panorama.png');
    background-size: cover;
    background-position: center;
    height: 350px;
@@ -7,6 +7,18 @@
 
 .tooltip-inner {
    max-width: 250px;
+}
+
+.carousel {
+   padding-bottom: 2em;
+}
+
+.card-body {
+   padding: .5em 1em;
+}
+
+.col-3 {
+   padding-bottom: 2em;
 }
 
 .media img {

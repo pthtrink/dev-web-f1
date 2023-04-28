@@ -4284,3 +4284,33 @@ readers do not read off random characters that represent icons */
 .fas {
   font-family: 'Font Awesome 5 Free';
   font-weight: 900; }
+
+@font-face {
+  font-family: 'F1-Regular';
+  src: url('../webfonts/Fonts-F1/Formula1-Regular-1.ttf');
+}
+
+@font-face {
+  font-family: 'F1-Black';
+  src: url('../webfonts/Fonts-F1/Formula1-Black.ttf');
+}
+
+@font-face {
+  font-family: 'F1-Bold-Web';
+  src: url('../webfonts/Fonts-F1/Formula1-Bold_web.ttf');
+}
+
+@font-face {
+  font-family: 'F1-Bold-4';
+  src: url('../webfonts/Fonts-F1/Formula1-Bold-4.ttf');
+}
+
+@font-face {
+  font-family: 'F1-Italic';
+  src: url('../webfonts/Fonts-F1/Formula1-Italic.ttf');
+}
+
+@font-face {
+  font-family: 'F1-Wide';
+  src: url('../webfonts/Fonts-F1/Formula1-Wide.ttf');
+}
