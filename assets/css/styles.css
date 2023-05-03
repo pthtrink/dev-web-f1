@@ -9,16 +9,19 @@
    max-width: 250px;
 }
 
-.carousel {
-   padding-bottom: 2em;
-}
-
 .card-body {
    padding: .5em 1em;
 }
 
 .col-3 {
    padding-bottom: 2em;
+}
+
+.container-body {
+	width: 100%;
+	margin-right: 20em;
+	margin-left: auto;
+	padding-top: 2em;
 }
 
 .media img {
