@@ -5,8 +5,12 @@
    height: 350px;
 }
 
-.titulo {
-
+.titulo,
+.titulo:hover {
+   font-family: "F1-Wide";
+   color:#000;
+   text-align: center;
+   text-transform: uppercase
 }
 
 .tooltip-inner {
