@@ -12,39 +12,42 @@
 	</head>
 
 	<body>
-		<nav class="navbar navbar-custom navbar-expand-md fixed-top">
+		<nav class="navbar navbar-expand-lg bg-dark fixed-top" data-bs-theme="dark">
 			<div class="container">
-				<a class="navbar-brand" href="#"><img src="../assets/images/logo-f1.png"
-						style="width: 5em;" alt="F1 Logo"></a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse"
-					data-target="#menu" aria-controls="menu"
-					aria-expanded="false" aria-label="Botão de navegação">
+				<a class="navbar-brand" href="#">
+					<img src="../assets/images/logo-f1.png" style="width: 5em;" alt="F1 Logo">
+				</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+					data-bs-target="#menu" aria-controls="menu"
+					aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
 				<div class="collapse navbar-collapse" id="menu">
-					<div class="navbar-nav mr-auto">
-						<a class="nav-item nav-link" style="font-family: F1-Bold-4; color:#FFF"
-							href="pilotos.html">Pilotos</a>
-						<a class="nav-item nav-link" style="font-family: F1-Bold-4; color:#FFF"
-							href="equipes.html">Equipes</a>
-						<div class="dropdown">
-							<a class="nav-item nav-link dropdown-toggle" data-toggle="dropdown"
-								href="#" style="font-family: F1-Bold-4; color:#FFF">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item">
+							<a class="nav-link active" style="font-family: F1-Bold-4; color:#FFF" href="pilotos.html">
+								Pilotos
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" style="font-family: F1-Bold-4; color:#FFF" href="equipes.html">
+								Equipes
+							</a>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+								style="font-family: F1-Bold-4; color:#FFF">
 								Campeonatos Anteriores
 							</a>
-							<div class="dropdown-menu">
-								<a class="dropdown-item" href="#" style="font-family: F1-Regular; color:
-									#FFF">2019</a>
-								<a class="dropdown-item" href="#" style="font-family: F1-Regular; color:
-									#FFF">2020</a>
-								<a class="dropdown-item" href="#" style="font-family: F1-Regular; color:
-									#FFF">2021</a>
-								<a class="dropdown-item" href="#" style="font-family: F1-Regular; color:
-									#FFF">2022</a>
-							</div>
-						</div>
-					</div>
-				
+							<ul class="dropdown-menu dropdown-menu-dark">
+								<li><a class="dropdown-item" href="#" style="font-family: F1-Regular;">2021</a></li>
+								<li><a class="dropdown-item" href="#" style="font-family: F1-Regular;">2022</a></li>
+								<li><a class="dropdown-item" href="#" style="font-family: F1-Regular;">2023</a></li>
+								<li><a class="dropdown-item" href="2024.html" style="font-family: F1-Regular;">2024</a></li>
+							</ul>
+						</li>
+					</ul>
+
 					<!--
 					<a class="nav-item nav-link" href="#reservamodal" data-toggle="modal">Reservas</a>
 
@@ -57,6 +60,7 @@
 						</a>
 					</div>
 					-->
+
 				</div>
 			</div>
 		</nav>
@@ -64,10 +68,7 @@
 		<!-- Aqui entra a página home -->
 		<div id="carousel-id" class="carousel slide d-none d-md-block mb-4"
 			style="margin-top: 69px; padding-bottom: 5em;" data-ride="carousel" data-interval="3000">
-			<ol class="carousel-indicators">
-				<li data-target="#carousel-id" data-slide-to="0" class="active"></li>
-				<li data-target="#carousel-id" data-slide-to="1"></li>
-			</ol>
+			
 			<div class="carousel-inner">
 				<div class="carousel-item active">
 					<img src="../assets/images/panorama2.jpg" class="d-block w-100" style="height:
