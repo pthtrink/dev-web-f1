@@ -10,6 +10,9 @@ import ProdutosComPaginacaoPage from "../pages/ProdutosComPaginacaoPage";
 import Layout from "./Layout";
 import PrivateRoutes from "./PrivateRoutes";
 import CadastrarProdutoPage from "../pages/CadastrarProdutoPage";
+import Page2024 from "../pages/Page2024";
+import EquipesPage from "../pages/EquipesPage";
+import PilotosPage from "../pages/PilotosPage";
 
 const router = createBrowserRouter([
     {
@@ -28,6 +31,9 @@ const router = createBrowserRouter([
             {path: "cadastrar-produto", element: <CadastrarProdutoPage />},
             {path: "produtos/:id", element: <ProdutoPage />},
             {path: "login", element: <LoginPage />},
+            {path: "2024", element: <Page2024 />},
+            {path: "pilotos", element: <PilotosPage />},
+            {path: "equipes", element: <EquipesPage />},
         ]
     },
     {

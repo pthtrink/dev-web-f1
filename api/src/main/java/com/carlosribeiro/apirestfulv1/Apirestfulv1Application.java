@@ -33,881 +33,451 @@ public class Apirestfulv1Application implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		Usuario usuario = new Usuario("admin", "desweb");
+		Usuario usuario = new Usuario("admin", "devweb");
 		usuarioRepository.save(usuario);
 
-		Categoria fruta = new Categoria("Fruta", "frutas");
-		categoriaRepository.save(fruta);
+		Categoria bone = new Categoria("Boné", "bones");
+		categoriaRepository.save(bone);
 
-		Categoria legume = new Categoria("Legume", "legumes");
-		categoriaRepository.save(legume);
+		Categoria polo = new Categoria("Camisa Polo", "polos");
+		categoriaRepository.save(polo);
 
-		Categoria verdura = new Categoria("Verdura", "verduras");
-		categoriaRepository.save(verdura);
+		Categoria lego = new Categoria("LEGO", "legos");
+		categoriaRepository.save(lego);
+
+		Categoria calcado = new Categoria("Calçado", "calcados");
+		categoriaRepository.save(calcado);
 
 		Produto produto = new Produto(
-				"abacate.png",
-				"Abacate",
-				"abacate",
-				"1 unidade aprox. 750g",
+				"lego_mclaren.png",
+				"LEGO F1 McLaren",
+				"lego_mclaren",
+				"Miniatura LEGO da equipe McLaren de Fórmula 1",
 				true,
-				100,
-				BigDecimal.valueOf(2.45),
+				12,
+				BigDecimal.valueOf(249.99),
 				LocalDate.of(2023, 4, 26),
-				fruta);
+				lego);
 		produtoRepository.save(produto);
 
 		produto = new Produto(
-				"abobrinha.png",
-				"Abobrinha",
-				"abobrinha",
-				"1 unidade aprox. 250g",
-				false,
-				500,
-				BigDecimal.valueOf(1.1),
+				"lego_ferrari.png",
+				"LEGO F1 Ferrari",
+				"lego_ferrari",
+				"Miniatura LEGO da equipe Ferrari de Fórmula 1",
+				true,
+				15,
+				BigDecimal.valueOf(249.99),
+				LocalDate.of(2022, 8, 11),
+				lego);
+		produtoRepository.save(produto);
+
+		produto = new Produto(
+				"lego_aston.png",
+				"LEGO F1 Aston Martin",
+				"lego_aston",
+				"Miniatura LEGO da equipe Aston Martin de Fórmula 1",
+				true,
+				7,
+				BigDecimal.valueOf(249.99),
+				LocalDate.of(2024, 3, 21),
+				lego);
+		produtoRepository.save(produto);
+
+		produto = new Produto(
+				"lego_alpine.png",
+				"LEGO F1 Alpine",
+				"lego_alpine",
+				"Miniatura LEGO da equipe Alpine de Fórmula 1",
+				true,
+				19,
+				BigDecimal.valueOf(249.99),
+				LocalDate.of(2021, 11, 5),
+				lego);
+		produtoRepository.save(produto);
+
+		produto = new Produto(
+				"lego_williams.png",
+				"LEGO F1 Williams",
+				"lego_williams",
+				"Miniatura LEGO da equipe Williams de Fórmula 1",
+				true,
+				12,
+				BigDecimal.valueOf(249.99),
+				LocalDate.of(2023, 1, 30),
+				lego);
+		produtoRepository.save(produto);
+
+		produto = new Produto(
+				"lego_redbull.png",
+				"LEGO F1 Red Bull",
+				"lego_redbull",
+				"Miniatura LEGO da equipe Red Bull de Fórmula 1",
+				true,
+				5,
+				BigDecimal.valueOf(249.99),
+				LocalDate.of(2022, 5, 18),
+				lego);
+		produtoRepository.save(produto);
+
+		produto = new Produto(
+				"lego_haas.png",
+				"LEGO F1 Haas",
+				"lego_haas",
+				"Miniatura LEGO da equipe Haas de Fórmula 1",
+				true,
+				9,
+				BigDecimal.valueOf(249.99),
+				LocalDate.of(2021, 7, 25),
+				lego);
+		produtoRepository.save(produto);
+
+		produto = new Produto(
+				"lego_sauber.png",
+				"LEGO F1 Kick Sauber",
+				"lego_sauber",
+				"Miniatura LEGO da equipe Kick Sauber de Fórmula 1",
+				true,
+				18,
+				BigDecimal.valueOf(249.99),
+				LocalDate.of(2023, 10, 2),
+				lego);
+		produtoRepository.save(produto);
+
+		produto = new Produto(
+				"lego_mercedes.png",
+				"LEGO F1 Mercedes",
+				"lego_mercedes",
+				"Miniatura LEGO da equipe Mercedes de Fórmula 1",
+				true,
+				11,
+				BigDecimal.valueOf(249.99),
+				LocalDate.of(2022, 6, 14),
+				lego);
+		produtoRepository.save(produto);
+
+		produto = new Produto(
+				"polo_mclaren.png",
+				"Camisa Polo F1 McLaren",
+				"camisa_polo_mclaren",
+				"Camisa Polo de torcedor da equipe McLaren de Fórmula 1",
+				true,
+				4,
+				BigDecimal.valueOf(329.90),
 				LocalDate.of(2023, 5, 22),
-				legume);
+				polo);
 		produtoRepository.save(produto);
 
 		produto = new Produto(
-				"abobora.png",
-				"Abóbora",
-				"abobora",
-				"1 unidade aprox. 1,9kg",
+				"polo_ferrari.png",
+				"Camisa Polo F1 Ferrari",
+				"camisa_polo_ferrari",
+				"Camisa Polo de torcedor da equipe Ferrari de Fórmula 1",
 				true,
-				400,
-				BigDecimal.valueOf(4.7),
-				LocalDate.of(2023, 3, 24),
-				legume);
+				9,
+				BigDecimal.valueOf(459.99),
+				LocalDate.of(2023, 8, 22),
+				polo);
 		produtoRepository.save(produto);
 
 		produto = new Produto(
-				"acelga.png",
-				"Acelga",
-				"acelga",
-				"1 maço de aprox. 400g",
+				"polo_aston.png",
+				"Camisa Polo F1 Aston Martin",
+				"camisa_polo_aston",
+				"Camisa Polo de torcedor da equipe Aston Martin de Fórmula 1",
 				true,
-				120,
-				BigDecimal.valueOf(4.99),
-				LocalDate.of(2023, 3, 12),
-				verdura);
+				15,
+				BigDecimal.valueOf(389.99),
+				LocalDate.of(2024, 4, 1),
+				polo);
 		produtoRepository.save(produto);
 
 		produto = new Produto(
-				"agriao.png",
-				"Agrião",
-				"agriao",
-				"1 maço de aprox. 200g",
+				"polo_alpine.png",
+				"Camisa Polo F1 Alpine",
+				"camisa_polo_alpine",
+				"Camisa Polo de torcedor da equipe Alpine de Fórmula 1",
 				true,
-				340,
-				BigDecimal.valueOf(2.5),
-				LocalDate.of(2023, 5, 17),
-				verdura);
+				6,
+				BigDecimal.valueOf(309.99),
+				LocalDate.of(2022, 12, 19),
+				polo);
 		produtoRepository.save(produto);
 
 		produto = new Produto(
-				"alface.png",
-				"Alface",
-				"alface",
-				"1 maço de aprox. 200g",
+				"polo_williams.png",
+				"Camisa Polo F1 Williams",
+				"camisa_polo_williams",
+				"Camisa Polo de torcedor da equipe Williams de Fórmula 1",
 				true,
-				220,
-				BigDecimal.valueOf(4.99),
-				LocalDate.of(2023, 5, 14),
-				verdura);
+				12,
+				BigDecimal.valueOf(299.99),
+				LocalDate.of(2023, 2, 28),
+				polo);
 		produtoRepository.save(produto);
 
 		produto = new Produto(
-				"banana.png",
-				"Banana",
-				"banana",
-				"1 unidade aprox. 165g",
+				"polo_redbull.png",
+				"Camisa Polo F1 Red Bull",
+				"camisa_polo_redbull",
+				"Camisa Polo de torcedor da equipe Red Bull de Fórmula 1",
 				true,
-				350,
-				BigDecimal.valueOf(1.05),
-				LocalDate.of(2023, 2, 22),
-				fruta);
+				5,
+				BigDecimal.valueOf(499.99),
+				LocalDate.of(2025, 6, 30),
+				polo);
 		produtoRepository.save(produto);
 
 		produto = new Produto(
-				"beringela.png",
-				"Beringela",
-				"beringela",
-				"1 unidade aprox. 370g",
+				"polo_racingbulls.png",
+				"Camisa Polo F1 Racing Bulls",
+				"camisa_polo_racingbulls",
+				"Camisa Polo de torcedor da equipe Racing Bulls de Fórmula 1",
 				true,
-				720,
-				BigDecimal.valueOf(1.85),
-				LocalDate.of(2023, 2, 23),
-				legume);
+				14,
+				BigDecimal.valueOf(349.99),
+				LocalDate.of(2024, 3, 11),
+				polo);
 		produtoRepository.save(produto);
 
 		produto = new Produto(
-				"brocolis.png",
-				"Brócolis",
-				"brocolis",
-				"1 unidade aprox. 300g",
+				"polo_haas.png",
+				"Camisa Polo F1 Haas",
+				"camisa_polo_haas",
+				"Camisa Polo de torcedor da equipe Haas de Fórmula 1",
 				true,
-				600,
-				BigDecimal.valueOf(5.39),
+				8,
+				BigDecimal.valueOf(329.99),
+				LocalDate.of(2022, 10, 5),
+				polo);
+		produtoRepository.save(produto);
+
+		produto = new Produto(
+				"polo_sauber.png",
+				"Camisa Polo F1 Kick Sauber",
+				"camisa_polo_sauber",
+				"Camisa Polo de torcedor da equipe Kick Sauber de Fórmula 1",
+				true,
+				11,
+				BigDecimal.valueOf(419.99),
+				LocalDate.of(2023, 9, 14),
+				polo);
+		produtoRepository.save(produto);
+
+		produto = new Produto(
+				"polo_mercedes.png",
+				"Camisa Polo F1 Mercedes",
+				"camisa_polo_mercedes",
+				"Camisa Polo de torcedor da equipe Mercedes de Fórmula 1",
+				true,
+				7,
+				BigDecimal.valueOf(479.99),
+				LocalDate.of(2025, 1, 20),
+				polo);
+		produtoRepository.save(produto);
+
+		produto = new Produto(
+				"calcado_preto_mercedes.png",
+				"Calçado Preto Mercedes",
+				"calcado_preto_mercedes",
+				"Calçado preto da equipe Mercedes de Fórmula 1",
+				true,
+				10,
+				BigDecimal.valueOf(449.99),
 				LocalDate.of(2023, 3, 28),
-				verdura);
+				calcado);
 		produtoRepository.save(produto);
 
 		produto = new Produto(
-				"cebola.png",
-				"Cebola",
-				"cebola",
-				"1 unidade aprox. 200g",
+				"calcado_branco_mercedes.png",
+				"Calçado Branco Mercedes",
+				"calcado_branco_mercedes",
+				"Calçado branco da equipe Mercedes de Fórmula 1",
 				true,
-				95,
-				BigDecimal.valueOf(0.56),
-				LocalDate.of(2023, 4, 30),
-				legume);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"cenoura.png",
-				"Cenoura",
-				"cenoura",
-				"1 unidade aprox. 180g",
-				true,
-				350,
-				BigDecimal.valueOf(1.01),
-				LocalDate.of(2023, 5, 29),
-				legume);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"cereja.png",
-				"Cereja",
-				"cereja",
-				"1 unidade aprox. 250g",
-				true,
-				240,
-				BigDecimal.valueOf(11.23),
-				LocalDate.of(2023, 5, 11),
-				fruta);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"abacate.png",
-				"Abacate",
-				"abacate",
-				"1 unidade aprox. 750g",
-				true,
-				100,
-				BigDecimal.valueOf(2.45),
-				LocalDate.of(2023, 4, 26),
-				fruta);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"abobrinha.png",
-				"Abobrinha",
-				"abobrinha",
-				"1 unidade aprox. 250g",
-				false,
-				500,
-				BigDecimal.valueOf(1.1),
-				LocalDate.of(2023, 5, 22),
-				legume);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"abobora.png",
-				"Abóbora",
-				"abobora",
-				"1 unidade aprox. 1,9kg",
-				true,
-				400,
-				BigDecimal.valueOf(4.7),
-				LocalDate.of(2023, 3, 24),
-				legume);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"acelga.png",
-				"Acelga",
-				"acelga",
-				"1 maço de aprox. 400g",
-				true,
-				120,
-				BigDecimal.valueOf(4.99),
-				LocalDate.of(2023, 3, 12),
-				verdura);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"agriao.png",
-				"Agrião",
-				"agriao",
-				"1 maço de aprox. 200g",
-				true,
-				340,
-				BigDecimal.valueOf(2.5),
-				LocalDate.of(2023, 5, 17),
-				verdura);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"alface.png",
-				"Alface",
-				"alface",
-				"1 maço de aprox. 200g",
-				true,
-				220,
-				BigDecimal.valueOf(4.99),
-				LocalDate.of(2023, 5, 14),
-				verdura);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"banana.png",
-				"Banana",
-				"banana",
-				"1 unidade aprox. 165g",
-				true,
-				350,
-				BigDecimal.valueOf(1.05),
-				LocalDate.of(2023, 2, 22),
-				fruta);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"beringela.png",
-				"Beringela",
-				"beringela",
-				"1 unidade aprox. 370g",
-				true,
-				720,
-				BigDecimal.valueOf(1.85),
-				LocalDate.of(2023, 2, 23),
-				legume);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"brocolis.png",
-				"Brócolis",
-				"brocolis",
-				"1 unidade aprox. 300g",
-				true,
-				600,
-				BigDecimal.valueOf(5.39),
+				10,
+				BigDecimal.valueOf(449.99),
 				LocalDate.of(2023, 3, 28),
-				verdura);
+				calcado);
 		produtoRepository.save(produto);
 
 		produto = new Produto(
-				"cebola.png",
-				"Cebola",
-				"cebola",
-				"1 unidade aprox. 200g",
+				"calcado_sola_feia_mercedes.png",
+				"Calçado Sola Feia Mercedes",
+				"calcado_sola_feia_mercedes",
+				"Calçado de sola feia da equipe Mercedes de Fórmula 1",
 				true,
-				95,
-				BigDecimal.valueOf(0.56),
-				LocalDate.of(2023, 4, 30),
-				legume);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"cenoura.png",
-				"Cenoura",
-				"cenoura",
-				"1 unidade aprox. 180g",
-				true,
-				350,
-				BigDecimal.valueOf(1.01),
-				LocalDate.of(2023, 5, 29),
-				legume);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"cereja.png",
-				"Cereja",
-				"cereja",
-				"1 unidade aprox. 250g",
-				true,
-				240,
-				BigDecimal.valueOf(11.23),
-				LocalDate.of(2023, 5, 11),
-				fruta);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"abacate.png",
-				"Abacate",
-				"abacate",
-				"1 unidade aprox. 750g",
-				true,
-				100,
-				BigDecimal.valueOf(2.45),
-				LocalDate.of(2023, 4, 26),
-				fruta);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"abobrinha.png",
-				"Abobrinha",
-				"abobrinha",
-				"1 unidade aprox. 250g",
-				false,
-				500,
-				BigDecimal.valueOf(1.1),
-				LocalDate.of(2023, 5, 22),
-				legume);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"abobora.png",
-				"Abóbora",
-				"abobora",
-				"1 unidade aprox. 1,9kg",
-				true,
-				400,
-				BigDecimal.valueOf(4.7),
-				LocalDate.of(2023, 3, 24),
-				legume);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"acelga.png",
-				"Acelga",
-				"acelga",
-				"1 maço de aprox. 400g",
-				true,
-				120,
-				BigDecimal.valueOf(4.99),
-				LocalDate.of(2023, 3, 12),
-				verdura);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"agriao.png",
-				"Agrião",
-				"agriao",
-				"1 maço de aprox. 200g",
-				true,
-				340,
-				BigDecimal.valueOf(2.5),
-				LocalDate.of(2023, 5, 17),
-				verdura);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"alface.png",
-				"Alface",
-				"alface",
-				"1 maço de aprox. 200g",
-				true,
-				220,
-				BigDecimal.valueOf(4.99),
-				LocalDate.of(2023, 5, 14),
-				verdura);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"banana.png",
-				"Banana",
-				"banana",
-				"1 unidade aprox. 165g",
-				true,
-				350,
-				BigDecimal.valueOf(1.05),
-				LocalDate.of(2023, 2, 22),
-				fruta);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"beringela.png",
-				"Beringela",
-				"beringela",
-				"1 unidade aprox. 370g",
-				true,
-				720,
-				BigDecimal.valueOf(1.85),
-				LocalDate.of(2023, 2, 23),
-				legume);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"brocolis.png",
-				"Brócolis",
-				"brocolis",
-				"1 unidade aprox. 300g",
-				true,
-				600,
-				BigDecimal.valueOf(5.39),
+				10,
+				BigDecimal.valueOf(449.99),
 				LocalDate.of(2023, 3, 28),
-				verdura);
+				calcado);
 		produtoRepository.save(produto);
 
 		produto = new Produto(
-				"cebola.png",
-				"Cebola",
-				"cebola",
-				"1 unidade aprox. 200g",
+				"calcado_all_black_mercedes.png",
+				"Calçado All Black Mercedes",
+				"calcado_all_black_mercedes",
+				"Calçado all black da equipe Mercedes de Fórmula 1",
 				true,
-				95,
-				BigDecimal.valueOf(0.56),
-				LocalDate.of(2023, 4, 30),
-				legume);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"cenoura.png",
-				"Cenoura",
-				"cenoura",
-				"1 unidade aprox. 180g",
-				true,
-				350,
-				BigDecimal.valueOf(1.01),
-				LocalDate.of(2023, 5, 29),
-				legume);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"cereja.png",
-				"Cereja",
-				"cereja",
-				"1 unidade aprox. 250g",
-				true,
-				240,
-				BigDecimal.valueOf(11.23),
-				LocalDate.of(2023, 5, 11),
-				fruta);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"abacate.png",
-				"Abacate",
-				"abacate",
-				"1 unidade aprox. 750g",
-				true,
-				100,
-				BigDecimal.valueOf(2.45),
-				LocalDate.of(2023, 4, 26),
-				fruta);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"abobrinha.png",
-				"Abobrinha",
-				"abobrinha",
-				"1 unidade aprox. 250g",
-				false,
-				500,
-				BigDecimal.valueOf(1.1),
-				LocalDate.of(2023, 5, 22),
-				legume);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"abobora.png",
-				"Abóbora",
-				"abobora",
-				"1 unidade aprox. 1,9kg",
-				true,
-				400,
-				BigDecimal.valueOf(4.7),
-				LocalDate.of(2023, 3, 24),
-				legume);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"acelga.png",
-				"Acelga",
-				"acelga",
-				"1 maço de aprox. 400g",
-				true,
-				120,
-				BigDecimal.valueOf(4.99),
-				LocalDate.of(2023, 3, 12),
-				verdura);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"agriao.png",
-				"Agrião",
-				"agriao",
-				"1 maço de aprox. 200g",
-				true,
-				340,
-				BigDecimal.valueOf(2.5),
-				LocalDate.of(2023, 5, 17),
-				verdura);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"alface.png",
-				"Alface",
-				"alface",
-				"1 maço de aprox. 200g",
-				true,
-				220,
-				BigDecimal.valueOf(4.99),
-				LocalDate.of(2023, 5, 14),
-				verdura);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"banana.png",
-				"Banana",
-				"banana",
-				"1 unidade aprox. 165g",
-				true,
-				350,
-				BigDecimal.valueOf(1.05),
-				LocalDate.of(2023, 2, 22),
-				fruta);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"beringela.png",
-				"Beringela",
-				"beringela",
-				"1 unidade aprox. 370g",
-				true,
-				720,
-				BigDecimal.valueOf(1.85),
-				LocalDate.of(2023, 2, 23),
-				legume);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"brocolis.png",
-				"Brócolis",
-				"brocolis",
-				"1 unidade aprox. 300g",
-				true,
-				600,
-				BigDecimal.valueOf(5.39),
+				10,
+				BigDecimal.valueOf(449.99),
 				LocalDate.of(2023, 3, 28),
-				verdura);
+				calcado);
 		produtoRepository.save(produto);
 
 		produto = new Produto(
-				"cebola.png",
-				"Cebola",
-				"cebola",
-				"1 unidade aprox. 200g",
+				"tenis_mercedes.png",
+				"Tênis Mercedes",
+				"tenis_mercedes",
+				"Tênis da equipe Mercedes de Fórmula 1",
 				true,
-				95,
-				BigDecimal.valueOf(0.56),
-				LocalDate.of(2023, 4, 30),
-				legume);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"cenoura.png",
-				"Cenoura",
-				"cenoura",
-				"1 unidade aprox. 180g",
-				true,
-				350,
-				BigDecimal.valueOf(1.01),
-				LocalDate.of(2023, 5, 29),
-				legume);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"cereja.png",
-				"Cereja",
-				"cereja",
-				"1 unidade aprox. 250g",
-				true,
-				240,
-				BigDecimal.valueOf(11.23),
-				LocalDate.of(2023, 5, 11),
-				fruta);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"abacate.png",
-				"Abacate",
-				"abacate",
-				"1 unidade aprox. 750g",
-				true,
-				100,
-				BigDecimal.valueOf(2.45),
-				LocalDate.of(2023, 4, 26),
-				fruta);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"abobrinha.png",
-				"Abobrinha",
-				"abobrinha",
-				"1 unidade aprox. 250g",
-				false,
-				500,
-				BigDecimal.valueOf(1.1),
-				LocalDate.of(2023, 5, 22),
-				legume);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"abobora.png",
-				"Abóbora",
-				"abobora",
-				"1 unidade aprox. 1,9kg",
-				true,
-				400,
-				BigDecimal.valueOf(4.7),
-				LocalDate.of(2023, 3, 24),
-				legume);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"acelga.png",
-				"Acelga",
-				"acelga",
-				"1 maço de aprox. 400g",
-				true,
-				120,
-				BigDecimal.valueOf(4.99),
-				LocalDate.of(2023, 3, 12),
-				verdura);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"agriao.png",
-				"Agrião",
-				"agriao",
-				"1 maço de aprox. 200g",
-				true,
-				340,
-				BigDecimal.valueOf(2.5),
-				LocalDate.of(2023, 5, 17),
-				verdura);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"alface.png",
-				"Alface",
-				"alface",
-				"1 maço de aprox. 200g",
-				true,
-				220,
-				BigDecimal.valueOf(4.99),
-				LocalDate.of(2023, 5, 14),
-				verdura);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"banana.png",
-				"Banana",
-				"banana",
-				"1 unidade aprox. 165g",
-				true,
-				350,
-				BigDecimal.valueOf(1.05),
-				LocalDate.of(2023, 2, 22),
-				fruta);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"beringela.png",
-				"Beringela",
-				"beringela",
-				"1 unidade aprox. 370g",
-				true,
-				720,
-				BigDecimal.valueOf(1.85),
-				LocalDate.of(2023, 2, 23),
-				legume);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"brocolis.png",
-				"Brócolis",
-				"brocolis",
-				"1 unidade aprox. 300g",
-				true,
-				600,
-				BigDecimal.valueOf(5.39),
+				10,
+				BigDecimal.valueOf(449.99),
 				LocalDate.of(2023, 3, 28),
-				verdura);
+				calcado);
 		produtoRepository.save(produto);
 
 		produto = new Produto(
-				"cebola.png",
-				"Cebola",
-				"cebola",
-				"1 unidade aprox. 200g",
+				"calcado_preto_ferrari.png",
+				"Calçado Preto Ferrari",
+				"calcado_preto_ferrari",
+				"Calçado preto da equipe Ferrari de Fórmula 1",
 				true,
-				95,
-				BigDecimal.valueOf(0.56),
-				LocalDate.of(2023, 4, 30),
-				legume);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"cenoura.png",
-				"Cenoura",
-				"cenoura",
-				"1 unidade aprox. 180g",
-				true,
-				350,
-				BigDecimal.valueOf(1.01),
-				LocalDate.of(2023, 5, 29),
-				legume);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"cereja.png",
-				"Cereja",
-				"cereja",
-				"1 unidade aprox. 250g",
-				true,
-				240,
-				BigDecimal.valueOf(11.23),
-				LocalDate.of(2023, 5, 11),
-				fruta);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"abacate.png",
-				"Abacate",
-				"abacate",
-				"1 unidade aprox. 750g",
-				true,
-				100,
-				BigDecimal.valueOf(2.45),
-				LocalDate.of(2023, 4, 26),
-				fruta);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"abobrinha.png",
-				"Abobrinha",
-				"abobrinha",
-				"1 unidade aprox. 250g",
-				false,
-				500,
-				BigDecimal.valueOf(1.1),
-				LocalDate.of(2023, 5, 22),
-				legume);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"abobora.png",
-				"Abóbora",
-				"abobora",
-				"1 unidade aprox. 1,9kg",
-				true,
-				400,
-				BigDecimal.valueOf(4.7),
-				LocalDate.of(2023, 3, 24),
-				legume);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"acelga.png",
-				"Acelga",
-				"acelga",
-				"1 maço de aprox. 400g",
-				true,
-				120,
-				BigDecimal.valueOf(4.99),
-				LocalDate.of(2023, 3, 12),
-				verdura);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"agriao.png",
-				"Agrião",
-				"agriao",
-				"1 maço de aprox. 200g",
-				true,
-				340,
-				BigDecimal.valueOf(2.5),
-				LocalDate.of(2023, 5, 17),
-				verdura);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"alface.png",
-				"Alface",
-				"alface",
-				"1 maço de aprox. 200g",
-				true,
-				220,
-				BigDecimal.valueOf(4.99),
-				LocalDate.of(2023, 5, 14),
-				verdura);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"banana.png",
-				"Banana",
-				"banana",
-				"1 unidade aprox. 165g",
-				true,
-				350,
-				BigDecimal.valueOf(1.05),
-				LocalDate.of(2023, 2, 22),
-				fruta);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"beringela.png",
-				"Beringela",
-				"beringela",
-				"1 unidade aprox. 370g",
-				true,
-				720,
-				BigDecimal.valueOf(1.85),
-				LocalDate.of(2023, 2, 23),
-				legume);
-		produtoRepository.save(produto);
-
-		produto = new Produto(
-				"brocolis.png",
-				"Brócolis",
-				"brocolis",
-				"1 unidade aprox. 300g",
-				true,
-				600,
-				BigDecimal.valueOf(5.39),
+				10,
+				BigDecimal.valueOf(449.99),
 				LocalDate.of(2023, 3, 28),
-				verdura);
+				calcado);
 		produtoRepository.save(produto);
 
 		produto = new Produto(
-				"cebola.png",
-				"Cebola",
-				"cebola",
-				"1 unidade aprox. 200g",
+				"calcado_vermelho_ferrari.png",
+				"Calçado Vermelho Ferrari",
+				"calcado_vermelho_ferrari",
+				"Calçado vermelho da equipe Ferrari de Fórmula 1",
 				true,
-				95,
-				BigDecimal.valueOf(0.56),
-				LocalDate.of(2023, 4, 30),
-				legume);
+				10,
+				BigDecimal.valueOf(449.99),
+				LocalDate.of(2023, 3, 28),
+				calcado);
 		produtoRepository.save(produto);
 
 		produto = new Produto(
-				"cenoura.png",
-				"Cenoura",
-				"cenoura",
-				"1 unidade aprox. 180g",
+				"bone_mclaren.png",
+				"Boné F1 McLaren",
+				"bone_mclaren",
+				"Boné da equipe McLaren de Fórmula 1",
 				true,
-				350,
-				BigDecimal.valueOf(1.01),
-				LocalDate.of(2023, 5, 29),
-				legume);
+				3,
+				BigDecimal.valueOf(109.99),
+				LocalDate.of(2024, 5, 15),
+				bone);
 		produtoRepository.save(produto);
 
 		produto = new Produto(
-				"cereja.png",
-				"Cereja",
-				"cereja",
-				"1 unidade aprox. 250g",
+				"bone_ferrari.png",
+				"Boné F1 Ferrari",
+				"bone_ferrari",
+				"Boné da equipe Ferrari de Fórmula 1",
 				true,
-				240,
-				BigDecimal.valueOf(11.23),
-				LocalDate.of(2023, 5, 11),
-				fruta);
+				5,
+				BigDecimal.valueOf(119.99),
+				LocalDate.of(2025, 2, 10),
+				bone);
 		produtoRepository.save(produto);
 
+		produto = new Produto(
+				"bone_aston.png",
+				"Boné F1 Aston Martin",
+				"bone_aston",
+				"Boné da equipe Aston Martin de Fórmula 1",
+				true,
+				1,
+				BigDecimal.valueOf(99.99),
+				LocalDate.of(2023, 11, 20),
+				bone);
+		produtoRepository.save(produto);
+
+		produto = new Produto(
+				"bone_alpine.png",
+				"Boné F1 Alpine",
+				"bone_alpine",
+				"Boné da equipe Alpine de Fórmula 1",
+				true,
+				4,
+				BigDecimal.valueOf(89.99),
+				LocalDate.of(2024, 1, 30),
+				bone);
+		produtoRepository.save(produto);
+
+		produto = new Produto(
+				"bone_williams.png",
+				"Boné F1 Williams",
+				"bone_williams",
+				"Boné da equipe Williams de Fórmula 1",
+				true,
+				2,
+				BigDecimal.valueOf(79.99),
+				LocalDate.of(2023, 7, 7),
+				bone);
+		produtoRepository.save(produto);
+
+		produto = new Produto(
+				"bone_redbull.png",
+				"Boné F1 Red Bull",
+				"bone_redbull",
+				"Boné da equipe Red Bull de Fórmula 1",
+				true,
+				5,
+				BigDecimal.valueOf(115.99),
+				LocalDate.of(2025, 3, 5),
+				bone);
+		produtoRepository.save(produto);
+
+		produto = new Produto(
+				"bone_racingbulls.png",
+				"Boné F1 Racing Bulls",
+				"bone_racingbulls",
+				"Boné da equipe Racing Bulls de Fórmula 1",
+				true,
+				2,
+				BigDecimal.valueOf(95.99),
+				LocalDate.of(2024, 8, 1),
+				bone);
+		produtoRepository.save(produto);
+
+		produto = new Produto(
+				"bone_haas.png",
+				"Boné F1 Haas",
+				"bone_haas",
+				"Boné da equipe Haas de Fórmula 1",
+				true,
+				1,
+				BigDecimal.valueOf(85.99),
+				LocalDate.of(2023, 9, 25),
+				bone);
+		produtoRepository.save(produto);
+
+		produto = new Produto(
+				"bone_sauber.png",
+				"Boné F1 Kick Sauber",
+				"bone_sauber",
+				"Boné da equipe Kick Sauber de Fórmula 1",
+				true,
+				4,
+				BigDecimal.valueOf(92.99),
+				LocalDate.of(2024, 6, 18),
+				bone);
+		produtoRepository.save(produto);
+
+		produto = new Produto(
+				"bone_mercedes.png",
+				"Boné F1 Mercedes",
+				"bone_mercedes",
+				"Boné da equipe Mercedes de Fórmula 1",
+				true,
+				5,
+				BigDecimal.valueOf(112.99),
+				LocalDate.of(2025, 7, 1),
+				bone);
+		produtoRepository.save(produto);
 	}
 }
