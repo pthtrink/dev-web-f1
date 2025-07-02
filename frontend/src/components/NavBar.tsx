@@ -56,8 +56,7 @@ const NavBar = () => {
 								<li>
 									<NavLink className="dropdown-item" to="/2024">
 										2024
-									</NavLink>
-								</li>
+									</NavLink></li>
 							</ul>
 						</li>
 						<li className="nav-item" style={{ fontFamily: "F1-Regular", color: "#FFF",

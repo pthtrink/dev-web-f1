@@ -1,6 +1,7 @@
 package com.carlosribeiro.apirestfulv1.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
