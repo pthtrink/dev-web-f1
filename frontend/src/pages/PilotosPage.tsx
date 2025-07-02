@@ -1,5 +1,4 @@
 import NavBar from "../components/NavBar";
-import { NavLink } from "react-router-dom";
 
 const PilotosPage = () => {
   

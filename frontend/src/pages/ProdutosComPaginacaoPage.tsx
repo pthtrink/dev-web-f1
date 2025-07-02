@@ -6,7 +6,7 @@ const ProdutosComPaginacaoPage = () => {
 
   return (
     <>
-      <h5>Lista de Produtos</h5>
+      <h5 style={{ fontFamily: "F1-Bold_web"}}>Lista de Produtos</h5>
       <hr className="mt-1" />
 
       <Pesquisa />

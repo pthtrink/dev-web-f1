@@ -120,7 +120,7 @@ const ProdutoPage = () => {
             disabled={removido}
             onClick={() => {
               setProdutoSelecionado(produto);
-              navigate("/cadastrar-produto");
+              navigate("/cadastrarProduto");
             }}
             className="btn btn-primary btn-sm me-3 w-100"
             type="button"

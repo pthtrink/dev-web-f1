@@ -73,7 +73,7 @@ const NavBar = () => {
 						</li>
 						<li className="nav-item" style={{fontFamily: "F1-Regular",
 							fontSize: "0.9em", textAlign: "center" }}>
-							<NavLink onClick={() => setProdutoSelecionado({} as Produto)} className="nav-link" to="/cadastrar-produto">
+							<NavLink onClick={() => setProdutoSelecionado({} as Produto)} className="nav-link" to="/cadastrarProduto">
 								Cadastrar Produto
 							</NavLink>
 						</li>
