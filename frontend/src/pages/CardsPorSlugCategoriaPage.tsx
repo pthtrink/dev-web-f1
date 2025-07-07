@@ -1,69 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Card from "../components/Card";
 import useRecuperarProdutosPorSlugCategoriaComPaginacao from "../hooks/useRecuperarProdutosPorSlugCategoriaComPaginacao";
 import Produto from "../interfaces/Produto";
-import useProdutoStore from "../store/ProdutoStore";
+import { useCart } from "../contexts/CartContext";
 import CardsPlaceholderPage from "./CardsPlaceholderPage";
 import InfiniteScroll from "react-infinite-scroll-component";
-
-export interface ProdCarrinho {
-  idProduto: number;
-  quantidade: number;
-}
+import useProdutoStore from "../store/ProdutoStore";
 
 const CardsPorSlugCategoriaPage = () => {
   const tamanho = useProdutoStore((s) => s.tamanho);
-
-  const [carrinho, setCarrinho] = useState(() => {
-    const itensDeCarrinho = localStorage.getItem("carrinho");
-    return itensDeCarrinho ? JSON.parse(itensDeCarrinho) : [];
-  });
-
-  console.log("carrinho = ", carrinho);
-
-  useEffect(() => {
-    localStorage.setItem("carrinho", JSON.stringify(carrinho));
-  }, [carrinho]);
-
-  const adicionarProduto = (produto: Produto) => {
-    setCarrinho((prevCarrinho: ProdCarrinho[]) => {
-      const existe = prevCarrinho.find((item) => item.idProduto === produto.id);
-      if (existe) {
-        // existe.quantidade = existe.quantidade + 1;  Isso não funciona
-        // return prevCarrinho;
-        const novoCarrinho: ProdCarrinho[] = prevCarrinho.map(
-          (item: ProdCarrinho) =>
-            item.idProduto === produto.id
-              ? { idProduto: item.idProduto, quantidade: item.quantidade + 1 }
-              : item
-        );
-        return novoCarrinho;
-      } else {
-        return [...prevCarrinho, { idProduto: produto.id, quantidade: 1 }];
-      }
-    });
-  };
-
-  const subtrairProduto = (produto: Produto) => {
-    setCarrinho((prevCarrinho: ProdCarrinho[]) => {
-      const existe = prevCarrinho.find((item) => item.idProduto === produto.id);
-      if (existe) {
-        // existe.quantidade = existe.quantidade + 1;  Isso não funciona
-        // return prevCarrinho;
-        const novoCarrinho: ProdCarrinho[] = prevCarrinho.map(
-          (item: ProdCarrinho) =>
-            item.idProduto === produto.id
-              ? { idProduto: item.idProduto, quantidade: item.quantidade - 1 }
-              : item
-        );
-        return novoCarrinho.filter((item) => item.quantidade > 0);
-      } else {
-        throw new Error("Erro ao subtrair 1 de produto no carrinho.");
-      }
-    });
-  };
-
   const { slugCategoria } = useParams();
   const {
     data,
@@ -77,24 +23,18 @@ const CardsPorSlugCategoriaPage = () => {
     slugCategoria: slugCategoria ? slugCategoria : "",
   });
 
+  const { cart, adicionarProduto, subtrairProduto } = useCart();
+
+  useEffect(() => {
+    console.log("Carrinho atualizado:", cart);
+  }, [cart]);
+
   if (carregandoProdutos) return <CardsPlaceholderPage />;
   if (errorProdutos) throw errorProdutos;
 
-  const produtosNoCarrinho: (ProdCarrinho | null)[] = [];
-  data.pages.forEach((page) => {
-    page.itens.forEach((produto) => {
-      const prodCarrinho = carrinho.find(
-        (item: ProdCarrinho) => item.idProduto === produto.id
-      );
-      produtosNoCarrinho.push(prodCarrinho ? prodCarrinho : null);
-    });
-  });
-
-  console.log("produtos no carrinho = ", produtosNoCarrinho);
-
   return (
     <InfiniteScroll
-      style={{overflowX: "hidden"}}
+      style={{ overflowX: "hidden" }}
       dataLength={data.pages.reduce((total, page) => total + page.totalDeItens, 0)}
       hasMore={hasNextPage}
       next={() => fetchNextPage()}
@@ -106,17 +46,22 @@ const CardsPorSlugCategoriaPage = () => {
           : "Produtos"}
       </h5>
       <div className="row">
-        {data.pages.map((page, pagina) =>
-          page.itens.map((produto, index) => (
-            <div key={produto.id} className="col-lg-2 col-md-3 col-sm-4 col-6">
-              <Card
-                produto={produto}
-                produtoNoCarrinho={produtosNoCarrinho[pagina * tamanho + index]}
-                adicionarProduto={adicionarProduto}
-                subtrairProduto={subtrairProduto}
-              />
-            </div>
-          ))
+        {data.pages.map((page) =>
+          page.itens.map((produto) => {
+            const produtoNoCarrinho = cart.find(
+              (item) => item.id === produto.id
+            );
+            return (
+              <div key={produto.id} className="col-lg-2 col-md-3 col-sm-4 col-6">
+                <Card
+                  produto={produto}
+                  produtoNoCarrinho={produtoNoCarrinho}
+                  adicionarProduto={adicionarProduto}
+                  subtrairProduto={subtrairProduto}
+                />
+              </div>
+            );
+          })
         )}
       </div>
       {/* {hasNextPage && (

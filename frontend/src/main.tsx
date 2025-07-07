@@ -5,6 +5,7 @@ import { createRoot } from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
 import "./index.css";
 import router from "./routes/router";
+import { CartProvider } from "./contexts/CartContext";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -19,7 +20,9 @@ export default queryClient;
 createRoot(document.getElementById("root")!).render(
   // <StrictMode>
   <QueryClientProvider client={queryClient}>
-    <RouterProvider router={router} />
+    <CartProvider>
+      <RouterProvider router={router} />
+    </CartProvider>
   </QueryClientProvider>
   // </StrictMode>,
 );
