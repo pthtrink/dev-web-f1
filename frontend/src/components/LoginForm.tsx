@@ -93,11 +93,6 @@ const LoginForm = () => {
 						<img src={loginIcon} /> Entrar
 					</button>
 				</div>
-				<div className="offset-lg-1 col-2">
-					<NavLink type="submit" className="btn btn-outline-primary" to="/cadastrarUsuario">
-						<img src={loginIcon} />Cadastrar-se
-					</NavLink>
-				</div>
 			</div>
 		</form>
 	);

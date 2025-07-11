@@ -73,26 +73,36 @@ const NavBar = () => {
 						</li>
 						<li className="nav-item" style={{fontFamily: "F1-Regular",
 							fontSize: "0.9em", textAlign: "center" }}>
-							<NavLink onClick={() => setProdutoSelecionado({} as Produto)} className="nav-link" to="/cadastrarProduto">
+							<NavLink onClick={() => setProdutoSelecionado({} as Produto)} className="nav-link" to="/cadastrar-produto">
 								Cadastrar Produto
 							</NavLink>
 						</li>
 					</ul>
 					<ul className="navbar-nav ms-auto">
-						<li className="nav-item" style={{fontFamily: "F1-Regular",
-							fontSize: "0.9em", textAlign: "center" }}>
-							<NavLink className="nav-link" to="/produtos:shop">
-								<i className="bi bi-shop"></i>
+						<li
+							className="nav-item"
+							style={{
+								fontFamily: "F1-Regular",
+								fontSize: "0.9em",
+								textAlign: "center",
+							}}
+						>
+							<NavLink
+								className="nav-link"
+								to="/cadastrar-usuario"
+								style={{ whiteSpace: "nowrap" }}
+							>
+								Cadastrar-se
 							</NavLink>
 						</li>
-						<li className="nav-item" style={{fontFamily: "F1-Regular",
-							fontSize: "0.9em", textAlign: "center" }}>
-							<NavLink className="nav-link" to="/carrinho">
-								<i className="bi bi-cart2"></i>
-							</NavLink>
-						</li>
-						<li className="nav-item" style={{fontFamily: "F1-Regular",
-							fontSize: "0.9em", textAlign: "center" }}>
+						<li
+							className="nav-item"
+							style={{
+								fontFamily: "F1-Regular",
+								fontSize: "0.9em",
+								textAlign: "center",
+							}}
+						>
 							<NavLink className="nav-link" to="/login">
 								{usuarioLogado ? "Sair" : "Entrar"}
 							</NavLink>
