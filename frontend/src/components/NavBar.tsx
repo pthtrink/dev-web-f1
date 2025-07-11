@@ -5,6 +5,7 @@ import Produto from "../interfaces/Produto";
 import useProdutoStore from "../store/ProdutoStore";
 import "../assets/css/all.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import loginIcon from "../assets/images/panorama1.png"; // Placeholder, ajuste o caminho
 
 const NavBar = () => {
 	const usuarioLogado = useUsuarioStore((s) => s.usuarioLogado);
@@ -80,22 +81,24 @@ const NavBar = () => {
 						</li>
 					</ul>
 					<ul className="navbar-nav ms-auto">
-						<li
-							className="nav-item"
-							style={{
-								fontFamily: "F1-Regular",
-								fontSize: "0.9em",
-								textAlign: "center",
-							}}
-						>
-							<NavLink
-								className="nav-link"
-								to="/cadastrar-usuario"
-								style={{ whiteSpace: "nowrap" }}
+						{!usuarioLogado && (
+							<li
+								className="nav-item"
+								style={{
+									fontFamily: "F1-Regular",
+									fontSize: "0.9em",
+									textAlign: "center",
+								}}
 							>
-								Cadastrar-se
-							</NavLink>
-						</li>
+								<NavLink
+									className="nav-link"
+									to="/cadastrar-usuario"
+									style={{ whiteSpace: "nowrap" }}
+								>
+									Cadastrar-se
+								</NavLink>
+							</li>
+						)}
 						<li
 							className="nav-item"
 							style={{
@@ -105,7 +108,7 @@ const NavBar = () => {
 							}}
 						>
 							<NavLink className="nav-link" to="/login">
-								{usuarioLogado ? "Sair" : "Entrar"}
+								{usuarioLogado ? "Deslogar" : "Logar"}
 							</NavLink>
 						</li>
 					</ul>
