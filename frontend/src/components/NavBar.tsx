@@ -46,7 +46,7 @@ const NavBar = () => {
 						</li>
 						<li className="nav-item dropdown" style={{ fontFamily: "F1-Regular", color:"#FFF",
 							fontSize: "0.9em", textAlign: "center"}}>
-							<a className="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							<a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 								Campeonatos Anteriores
 							</a>
 							<ul className="dropdown-menu dropdown-menu-dark">

@@ -1,8 +1,19 @@
-import { Outlet } from "react-router-dom"
-import NavBar from "../components/NavBar"
+import { useEffect } from "react";
+import { Outlet } from "react-router-dom";
+import { Dropdown } from "bootstrap";
+import NavBar from "../components/NavBar";
 
 const Layout = () => {
-  console.log("passou por aqui.");
+  useEffect(() => {
+    // Inicializa todos os dropdowns na página
+    const dropdownElementList = [].slice.call(
+      document.querySelectorAll(".dropdown-toggle")
+    );
+    dropdownElementList.map(function (dropdownToggleEl) {
+      return new Dropdown(dropdownToggleEl);
+    });
+  }, []);
+
   return (
     <>
       <NavBar />

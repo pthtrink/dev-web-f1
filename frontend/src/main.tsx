@@ -6,6 +6,7 @@ import { RouterProvider } from "react-router-dom";
 import "./index.css";
 import router from "./routes/router";
 import { CartProvider } from "./contexts/CartContext";
+import React from "react";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -18,11 +19,11 @@ const queryClient = new QueryClient({
 export default queryClient;
 
 createRoot(document.getElementById("root")!).render(
-  // <StrictMode>
-  <QueryClientProvider client={queryClient}>
-    <CartProvider>
-      <RouterProvider router={router} />
-    </CartProvider>
-  </QueryClientProvider>
-  // </StrictMode>,
+  <React.StrictMode>
+    <QueryClientProvider client={queryClient}>
+      <CartProvider>
+        <RouterProvider router={router} />
+      </CartProvider>
+    </QueryClientProvider>
+  </React.StrictMode>,
 );
