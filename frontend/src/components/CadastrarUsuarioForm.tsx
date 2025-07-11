@@ -3,8 +3,21 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import Usuario from "../interfaces/Usuario";
 import useCadastrarUsuario from "../hooks/useCadastrarUsuario";
-import cadastrarUsuarioSchema from "../schemas/cadastrarUsuarioSchema";
 import { useState } from "react";
+
+const cadastrarUsuarioSchema = z
+	.object({
+		conta: z
+			.string()
+			.min(1, "A conta é obrigatória")
+			.email("Formato de e-mail inválido"),
+		senha: z.string().min(6, "A senha deve ter pelo menos 6 caracteres"),
+		confirmacaoSenha: z.string(),
+	})
+	.refine((data) => data.senha === data.confirmacaoSenha, {
+		message: "As senhas não correspondem",
+		path: ["confirmacaoSenha"],
+	});
 
 type Form = z.infer<typeof cadastrarUsuarioSchema>;
 
