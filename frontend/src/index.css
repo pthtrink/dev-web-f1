@@ -14,7 +14,7 @@ nav-link e active dentro de um elemento nav com a classe cat (de categoria) - pa
 ter certeza que isso só seria aplicado à lista de categorias. */
 
 nav.nav .nav-link.active {
-  background-color: green;
+  background-color: #e10600; /* Cor vermelha da F1 */
 }
 
 nav.nav .nav-link {
@@ -22,7 +22,7 @@ nav.nav .nav-link {
 }
 
 nav.nav .nav-link:hover {
-  color: green;
+  color: #e10600; /* Cor vermelha da F1 */
 }
 
 nav.nav .nav-link.active:hover {
@@ -39,4 +39,4 @@ nav.nav .nav-link.active:hover {
 button.btn.btn-secondary:hover {
   background-color: #6c757d;
   border-color: #6c757d;
-} 
+}

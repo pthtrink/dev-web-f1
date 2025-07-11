@@ -6,10 +6,16 @@ const PilotosPage = () => {
     <>
 	<div id="root"></div>
       <NavBar />
+        <nav aria-label="breadcrumb">
+            <ol className="breadcrumb">
+                <li className="breadcrumb-item"><a href="/">Home</a></li>
+                <li className="breadcrumb-item active" aria-current="page">2024</li>
+            </ol>
+        </nav>
         <div className="container">
             <h4 id="pilotos" style={{ fontFamily: 'F1-Wide', paddingTop: '0.5em', paddingBottom: '0.1em'}}>PILOTOS</h4>
             <div className="row">
-            <div className="col-3">
+            <div className="col-3 mb-4">
                 <a href="https://www.formula1.com/en/drivers/lando-norris.html" className="text-decoration-none">
                 <div className="card">
                     <img src="/src/assets/images/pilotos/nor.png" alt="Norris" />
@@ -27,7 +33,7 @@ const PilotosPage = () => {
                 </a>
             </div>
 
-            <div className="col-3">
+            <div className="col-3 mb-4">
                 <a href="https://www.formula1.com/en/drivers/oscar-piastri.html" className="text-decoration-none">
                 <div className="card">
                     <img src="/src/assets/images/pilotos/pia.png" alt="Piastri" />
@@ -45,7 +51,7 @@ const PilotosPage = () => {
                 </a>
             </div>
 
-            <div className="col-3">
+            <div className="col-3 mb-4">
                 <a href="https://www.formula1.com/en/drivers/charles-leclerc.html" className="text-decoration-none">
                 <div className="card">
                     <img src="/src/assets/images/pilotos/lec.png" alt="Leclerc" />
@@ -63,7 +69,7 @@ const PilotosPage = () => {
                 </a>
             </div>
 
-            <div className="col-3">
+            <div className="col-3 mb-4">
                 <a href="https://www.formula1.com/en/drivers/lewis-hamilton.html" className="text-decoration-none">
                 <div className="card">
                     <img src="/src/assets/images/pilotos/ham.png" alt="Hamilton" />
@@ -81,7 +87,7 @@ const PilotosPage = () => {
                 </a>
             </div>
 
-            <div className="col-3">
+            <div className="col-3 mb-4">
                 <a href="https://www.formula1.com/en/drivers/max-verstappen.html" className="text-decoration-none">
                 <div className="card">
                     <img src="/src/assets/images/pilotos/ver.png" alt="Verstappen" />
@@ -99,7 +105,7 @@ const PilotosPage = () => {
                 </a>
             </div>
 
-            <div className="col-3">
+            <div className="col-3 mb-4">
                 <a href="https://www.formula1.com/en/drivers/yuki-tsunoda.html" className="text-decoration-none">
                 <div className="card">
                     <img src="/src/assets/images/pilotos/tsu.png" alt="Tsunoda" />
@@ -117,7 +123,7 @@ const PilotosPage = () => {
                 </a>
             </div>
 
-            <div className="col-3">
+            <div className="col-3 mb-4">
                 <a href="https://www.formula1.com/en/drivers/george-russell.html" className="text-decoration-none">
                 <div className="card">
                     <img src="/src/assets/images/pilotos/rus.png" alt="Russell" />
@@ -135,7 +141,7 @@ const PilotosPage = () => {
                 </a>
             </div>
 
-            <div className="col-3">
+            <div className="col-3 mb-4">
                 <a href="https://www.formula1.com/en/drivers/kimi-antonelli.html" className="text-decoration-none">
                 <div className="card">
                     <img src="/src/assets/images/pilotos/ant.png" alt="Antonelli" />
@@ -153,7 +159,7 @@ const PilotosPage = () => {
                 </a>
             </div>
 
-            <div className="col-3">
+            <div className="col-3 mb-4">
                 <a href="https://www.formula1.com/en/drivers/fernando-alonso.html" className="text-decoration-none">
                 <div className="card">
                     <img src="/src/assets/images/pilotos/alo.png" alt="Alonso" />
@@ -171,7 +177,7 @@ const PilotosPage = () => {
                 </a>
             </div>
 
-            <div className="col-3">
+            <div className="col-3 mb-4">
                 <a href="https://www.formula1.com/en/drivers/lance-stroll.html" className="text-decoration-none">
                 <div className="card">
                     <img src="/src/assets/images/pilotos/str.png" alt="Stroll" />
@@ -189,7 +195,7 @@ const PilotosPage = () => {
                 </a>
             </div>
 
-            <div className="col-3">
+            <div className="col-3 mb-4">
                 <a href="https://www.formula1.com/en/drivers/pierre-gasly.html" className="text-decoration-none">
                 <div className="card">
                     <img src="/src/assets/images/pilotos/gas.png" alt="Gasly" />
@@ -207,7 +213,7 @@ const PilotosPage = () => {
                 </a>
             </div>
 
-            <div className="col-3">
+            <div className="col-3 mb-4">
                 <a href="https://www.formula1.com/en/drivers/jack-doohan.html" className="text-decoration-none">
                 <div className="card">
                     <img src="/src/assets/images/pilotos/doo.png" alt="Doohan" />
@@ -225,7 +231,7 @@ const PilotosPage = () => {
                 </a>
             </div>
 
-            <div className="col-3">
+            <div className="col-3 mb-4">
                 <a href="https://www.formula1.com/en/drivers/esteban-ocon.html" className="text-decoration-none">
                 <div className="card">
                     <img src="/src/assets/images/pilotos/oco.png" alt="Ocon" />
@@ -243,7 +249,7 @@ const PilotosPage = () => {
                 </a>
             </div>
 
-            <div className="col-3">
+            <div className="col-3 mb-4">
                 <a href="https://www.formula1.com/en/drivers/oliver-bearman.html" className="text-decoration-none">
                 <div className="card">
                     <img src="/src/assets/images/pilotos/bea.png" alt="Bearman" />
@@ -261,7 +267,7 @@ const PilotosPage = () => {
                 </a>
             </div>
 
-            <div className="col-3">
+            <div className="col-3 mb-4">
                 <a href="https://www.formula1.com/en/drivers/isack-hadjar.html" className="text-decoration-none">
                 <div className="card">
                     <img src="/src/assets/images/pilotos/had.png" alt="Hadjar" />
@@ -279,7 +285,7 @@ const PilotosPage = () => {
                 </a>
             </div>
 
-            <div className="col-3">
+            <div className="col-3 mb-4">
                 <a href="https://www.formula1.com/en/drivers/liam-lawson.html" className="text-decoration-none">
                 <div className="card">
                     <img src="/src/assets/images/pilotos/law.png" alt="Lawson" />
@@ -297,7 +303,7 @@ const PilotosPage = () => {
                 </a>
             </div>
 
-            <div className="col-3">
+            <div className="col-3 mb-4">
                 <a href="https://www.formula1.com/en/drivers/alexander-albon.html" className="text-decoration-none">
                 <div className="card">
                     <img src="/src/assets/images/pilotos/alb.png" alt="Albon" />
@@ -315,7 +321,7 @@ const PilotosPage = () => {
                 </a>
             </div>
 
-            <div className="col-3">
+            <div className="col-3 mb-4">
                 <a href="https://www.formula1.com/en/drivers/carlos-sainz.html" className="text-decoration-none">
                 <div className="card">
                     <img src="/src/assets/images/pilotos/sai.png" alt="Sargeant" />
@@ -333,7 +339,7 @@ const PilotosPage = () => {
                 </a>
             </div>
 
-            <div className="col-3">
+            <div className="col-3 mb-4">
                 <a href="https://www.formula1.com/en/drivers/gabriel-bortoleto.html" className="text-decoration-none">
                 <div className="card">
                     <img src="/src/assets/images/pilotos/bor.png" alt="Bortoleto" />
@@ -351,7 +357,7 @@ const PilotosPage = () => {
                 </a>
             </div>
 
-            <div className="col-3">
+            <div className="col-3 mb-4">
                 <a href="https://www.formula1.com/en/drivers/nico-hulkenberg.html" className="text-decoration-none">
                 <div className="card">
                     <img src="/src/assets/images/pilotos/hul.png" alt="Hulkenberg" />

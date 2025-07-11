@@ -2,11 +2,16 @@ const EquipesPage = () => {
 
 	return (
 		<>
+		<nav aria-label="breadcrumb">
+				<ol className="breadcrumb">
+					<li className="breadcrumb-item"><a href="/">Home</a></li>
+					<li className="breadcrumb-item active" aria-current="page">Equipes</li>
+				</ol>
+			</nav>
 			<div className="container">
-
 			<h4 id="equipes" style={{ fontFamily: 'F1-Wide', paddingTop: '0.5em' }}>EQUIPES</h4>
 			<div className="row">
-					<div className="col-4">
+					<div className="col-4 mb-4">
 						<a href="https://www.formula1.com/en/teams/McLaren.html" className="text-decoration-none">
 							<div className="card h-100">
 								<img src="/src/assets/images/equipes/logos/McLaren.png" alt="McLaren" />
@@ -22,7 +27,7 @@ const EquipesPage = () => {
 						</a>
 					</div>
 
-					<div className="col-4">
+					<div className="col-4 mb-4">
 						<a href="https://www.formula1.com/en/teams/Ferrari.html" className="text-decoration-none">
 							<div className="card h-100">
 								<img src="/src/assets/images/equipes/logos/Ferrari.png" alt="Ferrari" />
@@ -38,7 +43,7 @@ const EquipesPage = () => {
 						</a>
 					</div>
 
-					<div className="col-4">
+					<div className="col-4 mb-4">
 						<a href="https://www.formula1.com/en/teams/Red-Bull-Racing.html" className="text-decoration-none">
 							<div className="card h-100">
 								<img src="/src/assets/images/equipes/logos/RedBull.png" alt="RedBull" />
@@ -54,7 +59,7 @@ const EquipesPage = () => {
 						</a>
 					</div>
 
-					<div className="col-4">
+					<div className="col-4 mb-4">
 						<a href="https://www.formula1.com/en/teams/Mercedes.html" className="text-decoration-none">
 							<div className="card h-100">
 								<img src="/src/assets/images/equipes/logos/Mercedes.png" alt="Mercedes" />
@@ -70,7 +75,7 @@ const EquipesPage = () => {
 						</a>
 					</div>
 
-					<div className="col-4">
+					<div className="col-4 mb-4">
 						<a href="https://www.formula1.com/en/teams/Aston-Martin.html" className="text-decoration-none">
 							<div className="card h-100">
 								<img src="/src/assets/images/equipes/logos/Aston.png" alt="AstonMartin" />
@@ -86,7 +91,7 @@ const EquipesPage = () => {
 						</a>
 					</div>
 
-					<div className="col-4">
+					<div className="col-4 mb-4">
 						<a href="https://www.formula1.com/en/teams/Alpine.html" className="text-decoration-none">
 							<div className="card h-100">
 								<img src="/src/assets/images/equipes/logos/Alpine.png" alt="Alpine" />
@@ -102,7 +107,7 @@ const EquipesPage = () => {
 						</a>
 					</div>
 
-					<div className="col-4">
+					<div className="col-4 mb-4">
 						<a href="https://www.formula1.com/en/teams/Haas.html" className="text-decoration-none">
 							<div className="card h-100">
 								<img src="/src/assets/images/equipes/logos/Haas.png" alt="Haas" />
@@ -118,7 +123,7 @@ const EquipesPage = () => {
 						</a>
 					</div>
 
-					<div className="col-4">
+					<div className="col-4 mb-4">
 						<a href="https://www.formula1.com/en/teams/RacingBulls.html" className="text-decoration-none">
 							<div className="card h-100">
 								<img src="/src/assets/images/equipes/logos/RacingBulls.png" alt="RacingBulls" />
@@ -134,7 +139,7 @@ const EquipesPage = () => {
 						</a>
 					</div>
 
-					<div className="col-4">
+					<div className="col-4 mb-4">
 						<a href="https://www.formula1.com/en/teams/Williams.html" className="text-decoration-none">
 							<div className="card h-100">
 								<img src="/src/assets/images/equipes/logos/Williams.png" alt="Williams" />
@@ -150,13 +155,13 @@ const EquipesPage = () => {
 						</a>
 					</div>
 
-					<div className="col-4">
+					<div className="col-4 mb-4">
 						{/*
 						Espaço para deixar a última equipe no meio
 						*/}
 					</div>
 
-					<div className="col-4">
+					<div className="col-4 mb-4">
 						<a href="https://www.formula1.com/en/teams/Kick-Sauber.html" className="text-decoration-none">
 							<div className="card h-100">
 								<img src="/src/assets/images/equipes/logos/KickSauber.png" alt="KickSauber" />
