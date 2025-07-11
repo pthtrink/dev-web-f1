@@ -88,16 +88,11 @@ const LoginForm = () => {
 			</div>
 
 			<div className="row">
-				<div className="offset-1 col-3">
+				<div className="offset-1 col-2">
 					<button type="submit" className="btn btn-outline-primary">
 						<img src={loginIcon} /> Entrar
 					</button>
 				</div>
-				{/* <div className="offset-lg-1 col-3">
-					<NavLink type="submit" className="nav-link" to="/cadastrarUsuario">
-						<img src={loginIcon} />Cadastrar-se
-					</NavLink>
-				</div> */}
 			</div>
 		</form>
 	);

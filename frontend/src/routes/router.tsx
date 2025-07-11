@@ -13,6 +13,7 @@ import CadastrarProdutoPage from "../pages/CadastrarProdutoPage";
 import Page2024 from "../pages/Page2024";
 import EquipesPage from "../pages/EquipesPage";
 import PilotosPage from "../pages/PilotosPage";
+import CadastrarUsuarioPage from "../pages/CadastrarUsuarioPage";
 
 const router = createBrowserRouter([
     {
@@ -29,6 +30,7 @@ const router = createBrowserRouter([
             {path: "produtos", element: <ProdutosComPaginacaoPage />},
             {path: "carrinho", element: <CarrinhoPage />},
             {path: "cadastrar-produto", element: <CadastrarProdutoPage />},
+            {path: "cadastrar-usuario", element: <CadastrarUsuarioPage />},
             {path: "produtos/:id", element: <ProdutoPage />},
             {path: "login", element: <LoginPage />},
             {path: "2024", element: <Page2024 />},
