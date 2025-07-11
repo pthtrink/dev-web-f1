@@ -34,6 +34,7 @@ const CadastrarUsuarioForm = () => {
 		useCadastrarUsuario();
 	const [cadastroSucesso, setCadastroSucesso] = useState(false);
 	const [cadastroInvalido, setCadastroInvalido] = useState(false);
+	const [contaExistente, setContaExistente] = useState(false);
 
 	const submit = ({ conta, senha }: Form) => {
 		const usuario: Usuario = { conta, senha };
@@ -42,15 +43,21 @@ const CadastrarUsuarioForm = () => {
 			onSuccess: () => {
 				setCadastroSucesso(true);
 				setCadastroInvalido(false);
+				setContaExistente(false);
 			},
-			onError: () => {
-				setCadastroInvalido(true);
-				setCadastroSucesso(false);
+			onError: (error: any) => {
+				if (error.response && error.response.status === 409) {
+					setContaExistente(true);
+					setCadastroInvalido(false);
+					setCadastroSucesso(false);
+				} else {
+					setCadastroInvalido(true);
+					setCadastroSucesso(false);
+					setContaExistente(false);
+				}
 			},
 		});
 	};
-
-	if (errorEfetuarCadastro) throw errorEfetuarCadastro;
 
 	return (
 		<>
@@ -60,6 +67,11 @@ const CadastrarUsuarioForm = () => {
 			{cadastroInvalido && (
 				<div className="alert alert-danger">
 					Não foi possível realizar o cadastro.
+				</div>
+			)}
+			{contaExistente && (
+				<div className="alert alert-danger">
+					Esta conta já está cadastrada.
 				</div>
 			)}
 			<form autoComplete="off" onSubmit={handleSubmit(submit)}>
