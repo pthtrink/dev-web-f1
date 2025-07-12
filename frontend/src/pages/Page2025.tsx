@@ -1,6 +1,6 @@
 import NavBar from "../components/NavBar"
 
-const Page2024 = () => {
+const Page2025 = () => {
   
   return (
     <>
@@ -347,4 +347,4 @@ const Page2024 = () => {
     </>
   );
 };
-export default Page2024;
+export default Page2025;

@@ -10,7 +10,7 @@ import ProdutosComPaginacaoPage from "../pages/ProdutosComPaginacaoPage";
 import Layout from "./Layout";
 import PrivateRoutes from "./PrivateRoutes";
 import CadastrarProdutoPage from "../pages/CadastrarProdutoPage";
-import Page2024 from "../pages/Page2024";
+import Page2025 from "../pages/Page2025";
 import EquipesPage from "../pages/EquipesPage";
 import PilotosPage from "../pages/PilotosPage";
 import CadastrarUsuarioPage from "../pages/CadastrarUsuarioPage";
@@ -33,7 +33,7 @@ const router = createBrowserRouter([
             {path: "cadastrar-usuario", element: <CadastrarUsuarioPage />},
             {path: "produtos/:id", element: <ProdutoPage />},
             {path: "login", element: <LoginPage />},
-            {path: "2024", element: <Page2024 />},
+            {path: "2025", element: <Page2025 />},
             {path: "pilotos", element: <PilotosPage />},
             {path: "equipes", element: <EquipesPage />},
         ]

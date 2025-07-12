@@ -52,12 +52,12 @@ const NavBar = () => {
 							</a>
 							<ul className="dropdown-menu dropdown-menu-dark" style={{ fontFamily: "F1-Regular", color: "#FFF",
 							fontSize: "1em"}}>
-								<li><a className="dropdown-item" href="#" >2021</a></li>
-								<li><a className="dropdown-item" href="#">2022</a></li>
+								<li><a className="dropdown-item" href="#" >2022</a></li>
 								<li><a className="dropdown-item" href="#">2023</a></li>
+								<li><a className="dropdown-item" href="#">2024</a></li>
 								<li>
-									<NavLink className="dropdown-item" to="/2024">
-										2024
+									<NavLink className="dropdown-item" to="/2025">
+										2025
 									</NavLink></li>
 							</ul>
 						</li>
