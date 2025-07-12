@@ -5,12 +5,6 @@ const Page2024 = () => {
   return (
     <>
       <NavBar />
-	  <nav aria-label="breadcrumb">
-		<ol className="breadcrumb">
-			<li className="breadcrumb-item"><a href="/">Home</a></li>
-			<li className="breadcrumb-item active" aria-current="page">2024</li>
-		</ol>
-	</nav>
       <div className="container">
 			<h4 id="construtores" style={{fontFamily: "F1-Wide", paddingTop: "0.5em"}}>CLASSIFICAÇÃO DOS CONSTRUTORES <span className="badge bg-dark">NEW</span></h4>
             <div className="accordion" id="accordion-equipes" style={{width: "50%"}}>

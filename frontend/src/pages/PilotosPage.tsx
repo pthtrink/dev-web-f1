@@ -5,12 +5,6 @@ const PilotosPage = () => {
   return (
 	<>
 	  <NavBar />
-		<nav aria-label="breadcrumb">
-			<ol className="breadcrumb">
-				<li className="breadcrumb-item"><a href="/">Home</a></li>
-				<li className="breadcrumb-item active" aria-current="page">2024</li>
-			</ol>
-		</nav>
 		<div className="container">
 			<h4 id="pilotos" style={{ fontFamily: 'F1-Wide', paddingTop: '0.5em', paddingBottom: '0.1em'}}>PILOTOS</h4>
 			<div className="row">

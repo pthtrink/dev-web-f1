@@ -4,6 +4,7 @@ import { z } from "zod";
 import Usuario from "../interfaces/Usuario";
 import useCadastrarUsuario from "../hooks/useCadastrarUsuario";
 import { useState } from "react";
+import { AxiosError } from 'axios';
 
 const cadastrarUsuarioSchema = z
 	.object({
@@ -30,8 +31,7 @@ const CadastrarUsuarioForm = () => {
 		resolver: zodResolver(cadastrarUsuarioSchema),
 	});
 
-	const { mutate: efetuarCadastro, error: errorEfetuarCadastro } =
-		useCadastrarUsuario();
+	const { mutate: efetuarCadastro } =	useCadastrarUsuario();
 	const [cadastroSucesso, setCadastroSucesso] = useState(false);
 	const [cadastroInvalido, setCadastroInvalido] = useState(false);
 	const [contaExistente, setContaExistente] = useState(false);
@@ -43,9 +43,8 @@ const CadastrarUsuarioForm = () => {
 			onSuccess: () => {
 				setCadastroSucesso(true);
 				setCadastroInvalido(false);
-				setContaExistente(false);
 			},
-			onError: (error: any) => {
+			onError: (error: AxiosError) => {
 				if (error.response && error.response.status === 409) {
 					setContaExistente(true);
 					setCadastroInvalido(false);
@@ -71,20 +70,18 @@ const CadastrarUsuarioForm = () => {
 			)}
 			{contaExistente && (
 				<div className="alert alert-danger">
-					Esta conta já está cadastrada.
+					Esta conta já existe.
 				</div>
 			)}
 			<form autoComplete="off" onSubmit={handleSubmit(submit)}>
 				<div className="row mb-2">
-					<label htmlFor="conta" className="col-lg-3 fw-bold mb-2">
+					<label htmlFor="conta" className="col-lg-2 fw-bold mb-2">
 						Conta (e-mail)
 					</label>
-					<div className="col-lg-9">
+					<div className="col-lg-5">
 						<input
 							{...register("conta")}
-							type="text"
-							id="conta"
-							className={`form-control form-control-sm ${
+							type="text" id="conta" className={`form-control form-control-sm ${
 								errors.conta && "is-invalid"
 							}`}
 						/>
@@ -94,11 +91,11 @@ const CadastrarUsuarioForm = () => {
 					</div>
 				</div>
 
-				<div className="row mb-3">
-					<label htmlFor="senha" className="col-lg-3 fw-bold mb-2">
+				<div className="row mb-2">
+					<label htmlFor="senha" className="col-lg-2 fw-bold mb-2">
 						Senha
 					</label>
-					<div className="col-lg-9">
+					<div className="col-lg-5">
 						<input
 							{...register("senha")}
 							type="password"
@@ -112,14 +109,11 @@ const CadastrarUsuarioForm = () => {
 						)}
 					</div>
 				</div>
-				<div className="row mb-3">
-					<label
-						htmlFor="confirmacaoSenha"
-						className="col-lg-3 fw-bold mb-2"
-					>
+				<div className="row mb-2">
+					<label htmlFor="confirmacaoSenha" className="col-lg-2 fw-bold mb-2">
 						Confirme a Senha
 					</label>
-					<div className="col-lg-9">
+					<div className="col-lg-5">
 						<input
 							{...register("confirmacaoSenha")}
 							type="password"
@@ -137,7 +131,7 @@ const CadastrarUsuarioForm = () => {
 				</div>
 
 				<div className="row">
-					<div className="offset-3 col-3">
+					<div className="offset-2">
 						<button
 							type="submit"
 							className="btn btn-outline-primary"
