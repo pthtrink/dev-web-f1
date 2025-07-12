@@ -80,6 +80,10 @@ const NavBar = () => {
 							</NavLink>
 						</li>
 					</ul>
+					
+					<NavLink className="nav-link" to="/carrinho">
+						<i className="bi bi-cart-fill" style={{ fontSize: "1.5em", color: "#FFF" }}></i>
+					</NavLink>
 					<ul className="navbar-nav ms-auto">
 						{!usuarioLogado && (
 							<li

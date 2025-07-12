@@ -2,6 +2,7 @@ package com.carlosribeiro.apirestfulv1.service;
 
 import com.carlosribeiro.apirestfulv1.exception.EntidadeNaoEncontradaException;
 import com.carlosribeiro.apirestfulv1.model.Produto;
+import com.carlosribeiro.apirestfulv1.repository.FavoritoRepository;
 import com.carlosribeiro.apirestfulv1.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -16,6 +17,9 @@ public class ProdutoService {
 
     @Autowired
     private ProdutoRepository produtoRepository;
+
+    @Autowired
+    private FavoritoRepository favoritoRepository;
 
     public List<Produto> recuperarProdutos() {
         return produtoRepository.recuperarProdutosComCategoria();
@@ -83,5 +87,17 @@ public class ProdutoService {
         else {
             return produtoRepository.recuperarProdutosPaginados(pageable);
         }
+    }
+
+    @Transactional
+    public void deleteProduto(Long produtoId) {
+        // Passo 1: Remover o produto de todas as listas de favoritos.
+        favoritoRepository.deleteByProdutoId(produtoId);
+
+        // Passo 2: Remover o produto de carrinhos de compra (se aplicável)
+        // carrinhoRepository.deleteByProdutoId(produtoId); // Exemplo
+
+        // Passo 3: Finalmente, deletar o produto.
+        produtoRepository.deleteById(produtoId);
     }
 }

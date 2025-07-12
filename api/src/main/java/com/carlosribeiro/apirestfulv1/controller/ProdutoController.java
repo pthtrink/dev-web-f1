@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,6 +19,17 @@ public class ProdutoController {
 
     @Autowired
     private ProdutoService produtoService;
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteProduto(@PathVariable Long id) {
+        try {
+            produtoService.deleteProduto(id);
+            return ResponseEntity.noContent().build(); // Sucesso, sem conteúdo para retornar
+        } catch (Exception e) {
+            // Idealmente, trate exceções específicas como 'ProdutoNaoEncontrado'
+            return ResponseEntity.notFound().build();
+        }
+    }
 
     @GetMapping   // Requisição do tipo GET para http://localhost:8080/produtos
     public List<Produto> recuperarProdutos() {
