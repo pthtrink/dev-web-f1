@@ -40,7 +40,7 @@ const CardsPorSlugCategoriaPage = () => {
       next={() => fetchNextPage()}
       loader={<h6>Carregando...</h6>}
     >
-      <h5 style={{ fontFamily: "F1-Regular", paddingBottom: "1rem" }}>
+      <h5>
         {slugCategoria
           ? slugCategoria.charAt(0).toUpperCase() + slugCategoria.slice(1)
           : "Produtos"}
@@ -58,7 +58,6 @@ const CardsPorSlugCategoriaPage = () => {
                   produtoNoCarrinho={produtoNoCarrinho}
                   adicionarProduto={adicionarProduto}
                   subtrairProduto={subtrairProduto}
-                  alternarFavorito={alternarFavorito}
                 />
               </div>
             );
