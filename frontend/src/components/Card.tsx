@@ -1,6 +1,7 @@
 import Produto from "../interfaces/Produto";
 import { useFavorites } from "../contexts/FavoritesContext";
 import { CartItem } from "../contexts/CartContext";
+import useUsuarioStore from "../store/UsuarioStore";
 
 interface Props {
   produto: Produto;
@@ -11,6 +12,7 @@ interface Props {
 
 const Card = ({ produto, adicionarProduto, subtrairProduto, produtoNoCarrinho }: Props) => {
   const { adicionarFavorito, removerFavorito, isFavorito } = useFavorites();
+  const usuarioLogado = useUsuarioStore((s) => s.usuarioLogado);
   const ehFavorito = isFavorito(produto.id || 0);
 
   const toggleFavorito = () => {
@@ -25,13 +27,15 @@ const Card = ({ produto, adicionarProduto, subtrairProduto, produtoNoCarrinho }:
     <div className="card h-100 border-0">
       <div className="position-relative">
         <img src={produto.imagem} className="card-img-top" alt={produto.nome} />
-        <button 
-          onClick={toggleFavorito}
-          className={`btn btn-sm position-absolute top-0 end-0 m-2 ${ehFavorito ? 'btn-danger' : 'btn-outline-danger'}`}
-          style={{ border: 'none', borderRadius: '50%', width: '35px', height: '35px' }}
-        >
-          {ehFavorito ? '❤️' : '🤍'}
-        </button>
+        {usuarioLogado > 0 && (
+          <button 
+            onClick={toggleFavorito}
+            className={`btn btn-sm position-absolute top-0 end-0 m-2 ${ehFavorito ? 'btn-danger' : 'btn-outline-danger'}`}
+            style={{ border: 'none', borderRadius: '50%', width: '35px', height: '35px' }}
+          >
+            {ehFavorito ? '❤️' : '🤍'}
+          </button>
+        )}
       </div>
       <div className="card-body">
         <h5 className="card-title">{produto.nome}</h5>

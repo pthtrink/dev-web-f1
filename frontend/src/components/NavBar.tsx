@@ -76,12 +76,14 @@ const NavBar = () => {
 					</ul>
 					
 					<ul className="navbar-nav ms-auto">
-						<li className="nav-item" style={{fontFamily: "F1-Regular",
-                            fontSize: "0.9em", textAlign: "center" }}>
-                            <NavLink className="nav-link" to="/favoritos">
-                                <i className="bi bi-heart"></i>
-                            </NavLink>
-                        </li>
+						{usuarioLogado > 0 && (
+							<li className="nav-item" style={{fontFamily: "F1-Regular",
+								fontSize: "0.9em", textAlign: "center" }}>
+								<NavLink className="nav-link" to="/favoritos">
+									<i className="bi bi-heart"></i>
+								</NavLink>
+							</li>
+						)}
 						<li className="nav-item" style={{fontFamily: "F1-Regular",
 							fontSize: "0.9em", textAlign: "center" }}>
 							<NavLink className="nav-link" to="/carrinho">
