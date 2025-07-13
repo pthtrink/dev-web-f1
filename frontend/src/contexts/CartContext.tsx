@@ -1,5 +1,6 @@
 import React, { createContext, useState, useContext, ReactNode, useEffect } from 'react';
 import Produto from '../interfaces/Produto';
+import useUsuarioStore from '../store/UsuarioStore';
 
 export interface CartItem extends Produto {
   quantidade: number;
@@ -18,14 +19,32 @@ interface CartContextData {
 const CartContext = createContext<CartContextData | undefined>(undefined);
 
 export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+  const usuarioLogado = useUsuarioStore((s) => s.usuarioLogado);
+  
   const [cart, setCart] = useState<CartItem[]>(() => {
-    const storedCart = localStorage.getItem('cart');
-    return storedCart ? JSON.parse(storedCart) : [];
+    if (usuarioLogado > 0) {
+      const storedCart = localStorage.getItem(`cart_user_${usuarioLogado}`);
+      return storedCart ? JSON.parse(storedCart) : [];
+    }
+    return [];
   });
 
+  // Atualiza carrinho quando o usuário muda
   useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(cart));
-  }, [cart]);
+    if (usuarioLogado > 0) {
+      const storedCart = localStorage.getItem(`cart_user_${usuarioLogado}`);
+      setCart(storedCart ? JSON.parse(storedCart) : []);
+    } else {
+      setCart([]);
+    }
+  }, [usuarioLogado]);
+
+  // Salva carrinho no localStorage quando muda
+  useEffect(() => {
+    if (usuarioLogado > 0) {
+      localStorage.setItem(`cart_user_${usuarioLogado}`, JSON.stringify(cart));
+    }
+  }, [cart, usuarioLogado]);
 
   const adicionarProduto = (produto: Produto) => {
     setCart(prevCart => {

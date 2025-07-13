@@ -1,5 +1,6 @@
 import React, { createContext, useState, useContext, ReactNode, useEffect } from 'react';
 import Produto from '../interfaces/Produto';
+import useUsuarioStore from '../store/UsuarioStore';
 
 interface FavoritesContextData {
   favorites: Produto[];
@@ -13,14 +14,32 @@ interface FavoritesContextData {
 const FavoritesContext = createContext<FavoritesContextData | undefined>(undefined);
 
 export const FavoritesProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+  const usuarioLogado = useUsuarioStore((s) => s.usuarioLogado);
+  
   const [favorites, setFavorites] = useState<Produto[]>(() => {
-    const storedFavorites = localStorage.getItem('favorites');
-    return storedFavorites ? JSON.parse(storedFavorites) : [];
+    if (usuarioLogado > 0) {
+      const storedFavorites = localStorage.getItem(`favorites_user_${usuarioLogado}`);
+      return storedFavorites ? JSON.parse(storedFavorites) : [];
+    }
+    return [];
   });
 
+  // Atualiza favoritos quando o usuário muda
   useEffect(() => {
-    localStorage.setItem('favorites', JSON.stringify(favorites));
-  }, [favorites]);
+    if (usuarioLogado > 0) {
+      const storedFavorites = localStorage.getItem(`favorites_user_${usuarioLogado}`);
+      setFavorites(storedFavorites ? JSON.parse(storedFavorites) : []);
+    } else {
+      setFavorites([]);
+    }
+  }, [usuarioLogado]);
+
+  // Salva favoritos no localStorage quando mudam
+  useEffect(() => {
+    if (usuarioLogado > 0) {
+      localStorage.setItem(`favorites_user_${usuarioLogado}`, JSON.stringify(favorites));
+    }
+  }, [favorites, usuarioLogado]);
 
   const adicionarFavorito = (produto: Produto) => {
     setFavorites(prevFavorites => {
