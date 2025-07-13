@@ -61,11 +61,6 @@ public class ProdutoController {
         return produtoService.alterarProduto(produto);
     }
 
-    @DeleteMapping  ("{idProduto}")   // http://localhost:8080/produtos/1
-    public void removerProduto(@PathVariable("idProduto") long id) {
-        produtoService.removerProduto(id);
-    }
-
     // Entradas
     // - pagina corrente
     // - tamanho da página

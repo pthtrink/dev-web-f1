@@ -12,6 +12,7 @@ interface CartContextData {
   subtrairProduto: (produto: Produto) => void;
   definirQuantidade: (produto: Produto, quantidade: number) => void;
   limparCarrinho: () => void;
+  removerProdutosInexistentes: (produtosExistentes: Produto[]) => void;
 }
 
 const CartContext = createContext<CartContextData | undefined>(undefined);
@@ -60,14 +61,39 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
   const definirQuantidade = (produto: Produto, quantidade: number) => {
     setCart(prevCart => {
-      return prevCart.map(item =>
-        item.id === produto.id ? { ...item, quantidade } : item
+      const itemExistente = prevCart.find(item => item.id === produto.id);
+      if (itemExistente) {
+        // Se existe, atualiza a quantidade
+        return prevCart.map(item =>
+          item.id === produto.id ? { ...item, quantidade } : item
+        );
+      } else if (quantidade > 0) {
+        // Se não existe e quantidade > 0, adiciona ao carrinho
+        return [...prevCart, { ...produto, quantidade }];
+      }
+      // Se não existe e quantidade <= 0, não faz nada
+      return prevCart;
+    });
+  };
+
+  const removerProdutosInexistentes = (produtosExistentes: Produto[]) => {
+    setCart(prevCart => {
+      return prevCart.filter(itemCarrinho => 
+        produtosExistentes.some(produto => produto.id === itemCarrinho.id)
       );
     });
   };
 
   return (
-    <CartContext.Provider value={{ cart, adicionarProduto, removerProduto, subtrairProduto, definirQuantidade, limparCarrinho }}>
+    <CartContext.Provider value={{ 
+      cart, 
+      adicionarProduto, 
+      removerProduto, 
+      subtrairProduto, 
+      definirQuantidade, 
+      limparCarrinho, 
+      removerProdutosInexistentes 
+    }}>
       {children}
     </CartContext.Provider>
   );
