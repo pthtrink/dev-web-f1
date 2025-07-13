@@ -14,6 +14,7 @@ import Page2025 from "../pages/Page2025";
 import EquipesPage from "../pages/EquipesPage";
 import PilotosPage from "../pages/PilotosPage";
 import CadastrarUsuarioPage from "../pages/CadastrarUsuarioPage";
+import EditarProdutoPage from "../pages/EditarProdutoPage";
 
 const router = createBrowserRouter([
     {
@@ -32,6 +33,7 @@ const router = createBrowserRouter([
             {path: "cadastrar-produto", element: <CadastrarProdutoPage />},
             {path: "cadastrar-usuario", element: <CadastrarUsuarioPage />},
             {path: "produtos/:id", element: <ProdutoPage />},
+            {path: "produtos/:id/editar", element: <EditarProdutoPage />},
             {path: "login", element: <LoginPage />},
             {path: "2025", element: <Page2025 />},
             {path: "pilotos", element: <PilotosPage />},

@@ -9,7 +9,6 @@ const ProdutoPage = () => {
   const [removido, setRemovido] = useState(false);
   const mensagem = useProdutoStore((s) => s.mensagem);
   const setMensagem = useProdutoStore((s) => s.setMensagem);
-  const setProdutoSelecionado = useProdutoStore((s) => s.setProdutoSelecionado);
 
   const { id } = useParams();
   const navigate = useNavigate();
@@ -114,29 +113,22 @@ const ProdutoPage = () => {
               {produto.disponivel ? "Sim" : "Não"}
             </div>
           </div>
-        </div>
-        <div className="col-lg-3 col-md-4 col-6 mt-3">
-          <button
-            disabled={removido}
-            onClick={() => {
-              setProdutoSelecionado(produto);
-              navigate("/cadastrarProduto");
-            }}
-            className="btn btn-primary btn-sm me-3 w-100"
-            type="button"
-          >
-            Editar
-          </button>
-        </div>
-        <div className="col-lg-3 col-md-4 col-6 mt-3">
-          <button
-            disabled={removido}
-            onClick={() => tratarRemocao(produto.id!)}
-            className="btn btn-danger btn-sm w-100"
-            type="button"
-          >
-            Remover
-          </button>
+          <div className="mt-3">
+            <button
+              onClick={() => {
+                navigate(`/produtos/${produto.id}/editar`);
+              }}
+              className="btn btn-primary me-2"
+            >
+              Editar
+            </button>
+            <button
+              onClick={() => tratarRemocao(produto.id!)}
+              className="btn btn-primary"
+            >
+              Remover
+            </button>
+          </div>
         </div>
       </div>
     </>

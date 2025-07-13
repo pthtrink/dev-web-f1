@@ -28,7 +28,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 // }
 
 const regexData = /^[0-9]{2}\/[0-9]{2}\/[0-9]{4}$/;
-const regexImagem = /^[a-z]+\.(gif|jpg|png|bmp)$/;
+const regexImagem = /^[a-z_]+\.(gif|jpg|png|bmp)$/;
 const schema = z.object({
   nome: z
     .string()
@@ -62,31 +62,36 @@ const schema = z.object({
 
 type ProdutoForm = z.infer<typeof schema>;
 
-const ProdutoForm = () => {
-  const setMensagem = useProdutoStore((s) => s.setMensagem);
-  const produtoSelecionado = useProdutoStore((s) => s.produtoSelecionado);
+interface Props {
+  produto?: Produto;
+}
 
+const ProdutoForm = ({ produto }: Props) => {
+  const setMensagem = useProdutoStore((s) => s.setMensagem);
+  
   const setValoresIniciais = () => {
-    if (produtoSelecionado.id) {
-      setValue("nome", produtoSelecionado.nome);
-      setValue("descricao", produtoSelecionado.descricao);
-      setValue("categoria", produtoSelecionado.categoria.id);
+    if (produto) {
+      setValue("nome", produto.nome);
+      setValue("descricao", produto.descricao);
+      setValue("categoria", produto.categoria.id);
       setValue(
         "data_cadastro",
-        dayjs(produtoSelecionado.dataCadastro).format("DD/MM/YYYY")
+        dayjs(produto.dataCadastro).format("DD/MM/YYYY")
       );
-      setValue("preco", produtoSelecionado.preco);
-      setValue("qtd_estoque", produtoSelecionado.qtdEstoque);
-      setValue("imagem", produtoSelecionado.imagem);
-      setValue("disponivel", produtoSelecionado.disponivel);
+      setValue("preco", produto.preco);
+      setValue("qtd_estoque", produto.qtdEstoque);
+      setValue("imagem", produto.imagem);
+      setValue("disponivel", produto.disponivel);
     } else {
       reset();
+      setValue("data_cadastro", dayjs(new Date()).format("DD/MM/YYYY"));
+      setValue("disponivel", true);
     }
   };
 
   useEffect(() => {
     setValoresIniciais();
-  }, [produtoSelecionado]);
+  }, [produto]);
 
   const navigate = useNavigate();
 
@@ -95,76 +100,89 @@ const ProdutoForm = () => {
   const { mutate: alterarProduto, error: errorAlterarProduto } =
     useAlterarProduto();
 
-  const { register, handleSubmit, setValue, reset, formState: {errors} } = 
-    useForm<ProdutoForm>({
-      defaultValues: {
-        nome: "",
-        descricao: "",
-        categoria: 0,
-        data_cadastro: "",
-        preco: undefined,
-        qtd_estoque: undefined,
-        imagem: "", 
-        disponivel: false
-      },
-      resolver: zodResolver(schema)
-    });
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    reset,
+    formState: { errors },
+  } = useForm<ProdutoForm>({
+    defaultValues: {
+      nome: "",
+      descricao: "",
+      categoria: 0,
+      data_cadastro: dayjs(new Date()).format("DD/MM/YYYY"),
+      preco: 0.0,
+      qtd_estoque: 0,
+      imagem: "",
+      disponivel: true,
+    },
+    resolver: zodResolver(schema),
+  });
 
-  const submit = ({
-    nome,
-    descricao,
-    categoria,
-    data_cadastro,
-    preco,
-    qtd_estoque,
-    imagem,
-    disponivel,
-  }: ProdutoForm) => {
-    const produto: Produto = {
-      nome: nome,
-      slug: nome ? slugify(nome, {
-        lower: true,
-        strict: true,
-      }) : "",
-      descricao: descricao,
-      categoria: { id: categoria } as Categoria,
-      dataCadastro: data_cadastro ? new Date(
-        data_cadastro.substring(6, 10) +
-          "-" +
-          data_cadastro.substring(3, 5) +
-          "-" +
-          data_cadastro.substring(0, 2)
-      ) : null,
-      preco: preco,
-      qtdEstoque: qtd_estoque,
-      imagem: imagem,
-      disponivel: disponivel,
+  const onCadastrar = (data: ProdutoForm) => {
+    const categoria: Categoria = {
+      id: data.categoria,
+      nome: "", // O backend não usa isso, apenas o id
+      slug: "" // O backend não usa isso, apenas o id
     };
-    if (produtoSelecionado.id) {
-      produto.id = produtoSelecionado.id;
-      alterarProduto(produto, {
-        onSuccess: (prodAlterado: Produto) => {
-          setMensagem("Produto alterado com sucesso!");
-          navigate("/produtos/" + prodAlterado.id);
-        },
-      });
-    } else {
-      cadastrarProduto(produto, {
-        onSuccess: (prodCadastrado: Produto) => {
-          setMensagem("Produto cadastrado com sucesso!");
-          navigate("/produtos/" + prodCadastrado.id);
-        },
-      });
-    }
+
+    const produto: Produto = {
+      nome: data.nome,
+      slug: slugify(data.nome, { lower: true }),
+      descricao: data.descricao,
+      categoria: categoria,
+      dataCadastro: dayjs(data.data_cadastro, "DD/MM/YYYY").toDate(),
+      preco: data.preco,
+      qtdEstoque: data.qtd_estoque,
+      imagem: data.imagem,
+      disponivel: data.disponivel,
+    };
+    cadastrarProduto(produto);
+    setMensagem("Produto cadastrado com sucesso!");
+    reset();
+    navigate("/produtos");
+  };
+
+  const onAlterar = (data: ProdutoForm) => {
+    const categoria: Categoria = {
+      id: data.categoria,
+      nome: "", // O backend não usa isso, apenas o id
+      slug: "" // O backend não usa isso, apenas o id
+    };
+
+    const produtoParaAlterar: Produto = {
+      id: produto!.id,
+      nome: data.nome,
+      slug: slugify(data.nome, { lower: true }),
+      descricao: data.descricao,
+      categoria: categoria,
+      dataCadastro: dayjs(data.data_cadastro, "DD/MM/YYYY").toDate(),
+      preco: data.preco,
+      qtdEstoque: data.qtd_estoque,
+      imagem: data.imagem,
+      disponivel: data.disponivel,
+    };
+    alterarProduto(produtoParaAlterar);
+    setMensagem("Produto alterado com sucesso!");
+    reset();
+    navigate("/produtos");
+  };
+
+  const onCancelar = () => {
+    reset();
+    navigate("/produtos");
   };
 
   if (errorCadastrarProduto) throw errorCadastrarProduto;
   if (errorAlterarProduto) throw errorAlterarProduto;
 
   return (
-    <form onSubmit={handleSubmit(submit)} autoComplete="off">
+    <form
+      onSubmit={handleSubmit(produto ? onAlterar : onCadastrar)}
+    >
       <div className="row">
-        <div className="col-xl-6">
+        <div className="col-sm-8">
           <div className="row mb-2">
             <label htmlFor="nome" className="col-xl-2 fw-bold">
               Nome
@@ -183,28 +201,7 @@ const ProdutoForm = () => {
             </div>
           </div>
         </div>
-        <div className="col-xl-6">
-          <div className="row mb-2">
-            <label htmlFor="descricao" className="col-xl-3 fw-bold">
-              Descrição
-            </label>
-            <div className="col-xl-9">
-              <input
-                {...register("descricao")}
-                type="text"
-                id="descricao"
-                className={errors.descricao ? "form-control form-control-sm is-invalid" : "form-control form-control-sm"}
-              />
-              <div className="invalid-feedback">
-                {errors.descricao?.message}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="row mb-1">
-        <div className="col-xl-6">
+        <div className="col-sm-4">
           <div className="row mb-2">
             <label htmlFor="categoria" className="col-xl-2 fw-bold">
               Categoria
@@ -227,136 +224,124 @@ const ProdutoForm = () => {
             </div>
           </div>
         </div>
-        <div className="col-xl-6">
-          <div className="row mb-2">
-            <label htmlFor="data_cadastro" className="col-xl-3 fw-bold">
-              Data Cadastro
-            </label>
-            <div className="col-xl-9">
-              <input
-                {...register("data_cadastro")}
-                type="text"
-                id="data_cadastro"
-                className={errors.data_cadastro ? "form-control form-control-sm is-invalid" : "form-control form-control-sm"}
-              />
-              <div className="invalid-feedback">
-                {errors.data_cadastro?.message}
-              </div>
+      </div>
+
+      <div className="row mb-1">
+        <div className="col-sm-4">
+          <div className="form-group">
+            <label htmlFor="preco">Preço</label>
+            <input
+              {...register("preco")}
+              type="number"
+              step={0.01}
+              className={
+                errors.preco ? "form-control is-invalid" : "form-control"
+              }
+              id="preco"
+            />
+            <div className="invalid-feedback">{errors.preco?.message}</div>
+          </div>
+        </div>
+
+        <div className="col-sm-4">
+          <div className="form-group">
+            <label htmlFor="qtd_estoque">Quantidade em Estoque</label>
+            <input
+              {...register("qtd_estoque")}
+              type="number"
+              className={
+                errors.qtd_estoque ? "form-control is-invalid" : "form-control"
+              }
+              id="qtd_estoque"
+            />
+            <div className="invalid-feedback">
+              {errors.qtd_estoque?.message}
+            </div>
+          </div>
+        </div>
+
+        <div className="col-sm-4">
+          <div className="form-group">
+            <label htmlFor="data_cadastro">Data de Cadastro</label>
+            <input
+              {...register("data_cadastro")}
+              type="text"
+              className={
+                errors.data_cadastro ? "form-control is-invalid" : "form-control"
+              }
+              id="data_cadastro"
+            />
+            <div className="invalid-feedback">
+              {errors.data_cadastro?.message}
             </div>
           </div>
         </div>
       </div>
 
       <div className="row mb-1">
-        <div className="col-xl-6">
-          <div className="row mb-2">
-            <label htmlFor="preco" className="col-xl-2 fw-bold">
-              Preço
-            </label>
-            <div className="col-xl-10">
-              <input
-                {...register("preco")}
-                type="number"
-                step="0.01"
-                min="0"
-                id="preco"
-                className={errors.preco ? "form-control form-control-sm is-invalid" : "form-control form-control-sm"}
-              />
-              <div className="invalid-feedback">
-                {errors.preco?.message}
-              </div>
+        <div className="col-sm-8">
+          <div className="form-group">
+            <label htmlFor="descricao">Descrição</label>
+            <input
+              {...register("descricao")}
+              type="text"
+              className={
+                errors.descricao ? "form-control is-invalid" : "form-control"
+              }
+              id="descricao"
+            />
+            <div className="invalid-feedback">
+              {errors.descricao?.message}
             </div>
           </div>
         </div>
-        <div className="col-xl-6">
-          <div className="row mb-2">
-            <label htmlFor="qtd_estoque" className="col-xl-3 fw-bold">
-              Estoque
+
+        <div className="col-sm-4">
+          <div className="form-group">
+            <label htmlFor="imagem">Nome da Imagem</label>
+            <input
+              {...register("imagem")}
+              type="text"
+              className={
+                errors.imagem ? "form-control is-invalid" : "form-control"
+              }
+              id="imagem"
+            />
+            <div className="invalid-feedback">{errors.imagem?.message}</div>
+          </div>
+
+          <div className="form-check mt-2">
+            <input
+              {...register("disponivel")}
+              className="form-check-input"
+              type="checkbox"
+              id="disponivel"
+            />
+            <label className="form-check-label" htmlFor="disponivel">
+              Disponível
             </label>
-            <div className="col-xl-9">
-              <input
-                {...register("qtd_estoque")}
-                type="number"
-                min="0"
-                id="qtd_estoque"
-                className={errors.qtd_estoque ? "form-control form-control-sm is-invalid" : "form-control form-control-sm"}
-              />
-              <div className="invalid-feedback">
-                {errors.qtd_estoque?.message}
-              </div>
-            </div>
           </div>
         </div>
       </div>
 
-      <div className="row mb-1">
-        <div className="col-xl-6">
-          <div className="row mb-2">
-            <label htmlFor="imagem" className="col-xl-2 fw-bold">
-              Imagem
-            </label>
-            <div className="col-xl-10">
-              <input
-                {...register("imagem")}
-                type="text"
-                id="imagem"
-                className={errors.imagem ? "form-control form-control-sm is-invalid" : "form-control form-control-sm"}
-              />
-              <div className="invalid-feedback">
-                {errors.imagem?.message}
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="col-xl-6">
-          <div className="row mb-2">
-            <div className="offset-xl-3 col-xl-9">
-              <div className="form-check pl-0 mt-xl-0 mt-2">
-                <input
-                  {...register("disponivel")}
-                  type="checkbox"
-                  id="disponivel"
-                  className="form-check-input"
-                />
-                <label htmlFor="disponivel" className="form-check-label fw-bold">
-                  Disponível?
-                </label>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="row mb-5">
-        <div className="col-xl-6">
-          <div className="row">
-            <div className="col-xl-10 offset-xl-2 d-flex">
-              <button
-                id="botao"
-                type="submit"
-                className="btn btn-primary btn-sm d-flex align-items-center me-3"
-              >
-                {produtoSelecionado.id ? (
-                  <>
-                    <img src={databaseEdit} className="me-1" /> Alterar
-                  </>
-                ) : (
-                  <>
-                    <img src={databaseAdd} className="me-1" /> Cadastrar
-                  </>
-                )}
-              </button>
-              <button
-                onClick={() => setValoresIniciais()}
-                id="botao"
-                type="button"
-                className="btn btn-primary btn-sm d-flex align-items-center "
-              >
-                <img src={databaseCancel} className="me-1" /> Cancelar
-              </button>
-            </div>
-          </div>
-        </div>
+      <div className="mt-3">
+        <button type="submit" className="btn btn-primary me-2">
+          <img
+            src={produto ? databaseEdit : databaseAdd}
+            alt=""
+            width={24}
+            className="me-2"
+          />
+          {produto ? "Alterar" : "Cadastrar"}
+        </button>
+        <button
+          type="button"
+          className="btn btn-primary"
+          onClick={() => onCancelar()}
+        >
+          <img src={databaseCancel} alt="" width={24} className="me-2" />
+          Cancelar
+        </button>
       </div>
     </form>
   );
