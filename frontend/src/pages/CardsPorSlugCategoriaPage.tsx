@@ -7,6 +7,7 @@ import { useCart } from "../contexts/CartContext";
 import CardsPlaceholderPage from "./CardsPlaceholderPage";
 import InfiniteScroll from "react-infinite-scroll-component";
 import useProdutoStore from "../store/ProdutoStore";
+import useDataIntegrity from "../hooks/useDataIntegrity";
 
 const CardsPorSlugCategoriaPage = () => {
   const tamanho = useProdutoStore((s) => s.tamanho);
@@ -25,6 +26,12 @@ const CardsPorSlugCategoriaPage = () => {
 
   const { cart, adicionarProduto, subtrairProduto } = useCart();
 
+  // Extrai todos os produtos carregados para verificação de integridade
+  const produtosExistentes = data?.pages.flatMap((page) => page.itens) || [];
+
+  // Verifica integridade dos dados (remove produtos excluídos do carrinho e favoritos)
+  useDataIntegrity(produtosExistentes);
+
   useEffect(() => {
     console.log("Carrinho atualizado:", cart);
   }, [cart]);
@@ -35,7 +42,10 @@ const CardsPorSlugCategoriaPage = () => {
   return (
     <InfiniteScroll
       style={{ overflowX: "hidden" }}
-      dataLength={data.pages.reduce((total, page) => total + page.totalDeItens, 0)}
+      dataLength={data.pages.reduce(
+        (total, page) => total + page.totalDeItens,
+        0
+      )}
       hasMore={hasNextPage}
       next={() => fetchNextPage()}
       loader={<h6>Carregando...</h6>}
@@ -52,7 +62,10 @@ const CardsPorSlugCategoriaPage = () => {
               (item) => item.id === produto.id
             );
             return (
-              <div key={produto.id} className="col-lg-2 col-md-3 col-sm-4 col-6">
+              <div
+                key={produto.id}
+                className="col-lg-2 col-md-3 col-sm-4 col-6"
+              >
                 <Card
                   produto={produto}
                   produtoNoCarrinho={produtoNoCarrinho}

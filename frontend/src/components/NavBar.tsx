@@ -9,7 +9,12 @@ import loginIcon from "../assets/images/panorama1.png"; // Placeholder, ajuste o
 
 const NavBar = () => {
 	const usuarioLogado = useUsuarioStore((s) => s.usuarioLogado);
+	const logout = useUsuarioStore((s) => s.logout);
 	const setProdutoSelecionado = useProdutoStore((s) => s.setProdutoSelecionado);
+
+	const handleLogout = () => {
+		logout();
+	};
 
 	return (
 		<nav className="navbar navbar-expand-lg bg-dark fixed-top" data-bs-theme="dark">
@@ -76,12 +81,14 @@ const NavBar = () => {
 					</ul>
 					
 					<ul className="navbar-nav ms-auto">
-						<li className="nav-item" style={{fontFamily: "F1-Regular",
-                            fontSize: "0.9em", textAlign: "center" }}>
-                            <NavLink className="nav-link" to="/favoritos">
-                                <i className="bi bi-heart"></i>
-                            </NavLink>
-                        </li>
+						{usuarioLogado > 0 && (
+							<li className="nav-item" style={{fontFamily: "F1-Regular",
+								fontSize: "0.9em", textAlign: "center" }}>
+								<NavLink className="nav-link" to="/favoritos">
+									<i className="bi bi-heart"></i>
+								</NavLink>
+							</li>
+						)}
 						<li className="nav-item" style={{fontFamily: "F1-Regular",
 							fontSize: "0.9em", textAlign: "center" }}>
 							<NavLink className="nav-link" to="/carrinho">
@@ -114,9 +121,26 @@ const NavBar = () => {
 								textAlign: "center",
 							}}
 						>
-							<NavLink className="nav-link" to="/login">
-								{usuarioLogado ? "Deslogar" : "Logar"}
-							</NavLink>
+							{usuarioLogado > 0 ? (
+								<button 
+									className="nav-link"
+									onClick={handleLogout}
+									style={{ 
+										border: 'none', 
+										background: 'none', 
+										color: 'white',
+										padding: '0.5rem 1rem',
+										cursor: 'pointer'
+									}}
+									title="Sair"
+								>
+									🚪
+								</button>
+							) : (
+								<NavLink className="nav-link" to="/login" title="Entrar">
+									🔑
+								</NavLink>
+							)}
 						</li>
 					</ul>
 				</div>

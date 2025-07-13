@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import useProdutoStore from "../store/ProdutoStore";
 import useRecuperarProdutosComPaginacao from "../hooks/useRecuperarProdutosComPaginacao";
 import useRemoverProdutoPorId from "../hooks/useRemoverProdutoPorId";
+import useDataIntegrity from "../hooks/useDataIntegrity";
 
 const TabelaDeProdutos = () => {
   const pagina = useProdutoStore((s) => s.pagina);
@@ -26,6 +27,10 @@ const TabelaDeProdutos = () => {
   const { mutate: removerProduto, error: errorRemocaoProduto } =
     useRemoverProdutoPorId();
 
+  // Verifica integridade dos dados quando produtos são carregados
+  const produtos: Produto[] = resultadoPaginado?.itens || [];
+  useDataIntegrity(produtos);
+
   const tratarRemocao = (id: number) => {
     removerProduto(id);
     setPagina(0);
@@ -35,8 +40,6 @@ const TabelaDeProdutos = () => {
     return <p className="fw-bold">Carregando produtos...</p>;
   if (errorProdutos) throw errorProdutos;
   if (errorRemocaoProduto) throw errorRemocaoProduto;
-
-  const produtos: Produto[] = resultadoPaginado.itens;
 
   return (
     <div className="table-responsive">
