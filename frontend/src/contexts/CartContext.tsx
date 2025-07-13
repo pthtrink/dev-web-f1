@@ -10,6 +10,7 @@ interface CartContextData {
   adicionarProduto: (produto: Produto) => void;
   removerProduto: (produtoId: number) => void;
   subtrairProduto: (produto: Produto) => void;
+  definirQuantidade: (produto: Produto, quantidade: number) => void;
   limparCarrinho: () => void;
 }
 
@@ -57,8 +58,16 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     setCart([]);
   };
 
+  const definirQuantidade = (produto: Produto, quantidade: number) => {
+    setCart(prevCart => {
+      return prevCart.map(item =>
+        item.id === produto.id ? { ...item, quantidade } : item
+      );
+    });
+  };
+
   return (
-    <CartContext.Provider value={{ cart, adicionarProduto, removerProduto, subtrairProduto, limparCarrinho }}>
+    <CartContext.Provider value={{ cart, adicionarProduto, removerProduto, subtrairProduto, definirQuantidade, limparCarrinho }}>
       {children}
     </CartContext.Provider>
   );

@@ -1,10 +1,10 @@
 import { useCart } from '../contexts/CartContext';
 
 const CarrinhoPage = () => {
-  const { cart, removerProduto, adicionarProduto, subtrairProduto } = useCart();
+  const { cart, removerProduto, adicionarProduto, subtrairProduto, definirQuantidade } = useCart();
 
   const calcularTotal = () => {
-    return cart.reduce((total, item) => total + item.preco * item.quantidade, 0);
+    return cart.reduce((total, item) => total + item.preco * (item.quantidade || 1), 0);
   };
 
   return (
@@ -32,13 +32,33 @@ const CarrinhoPage = () => {
                 </td>
                 <td>R$ {item.preco.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
                 <td>
-                  <div className="btn-group">
-                    <button onClick={() => subtrairProduto(item)} className="btn btn-secondary btn-sm">-</button>
-                    <span className="btn btn-light btn-sm">{item.quantidade}</span>
-                    <button onClick={() => adicionarProduto(item)} className="btn btn-secondary btn-sm">+</button>
-                  </div>
+                  <input 
+                    type="number" 
+                    min="1" 
+                    value={item.quantidade || ''} 
+                    onChange={(e) => {
+                      const valor = e.target.value;
+                      if (valor === '') {
+                        // Permite campo vazio temporariamente
+                        definirQuantidade(item, 0);
+                      } else {
+                        const novaQuantidade = parseInt(valor);
+                        if (novaQuantidade > 0) {
+                          definirQuantidade(item, novaQuantidade);
+                        }
+                      }
+                    }}
+                    onBlur={(e) => {
+                      // Se o campo estiver vazio ao perder o foco, define como 1
+                      if (e.target.value === '' || parseInt(e.target.value) === 0) {
+                        definirQuantidade(item, 1);
+                      }
+                    }}
+                    className="form-control" 
+                    style={{ width: '80px' }}
+                  />
                 </td>
-                <td>R$ {(item.preco * item.quantidade).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
+                <td>R$ {(item.preco * (item.quantidade || 1)).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
                 <td>
                   <button onClick={() => item.id && removerProduto(item.id)} className="btn btn-danger btn-sm">Remover</button>
                 </td>
