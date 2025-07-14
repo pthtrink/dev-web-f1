@@ -1,13 +1,9 @@
 import { useFavorites } from '../contexts/FavoritesContext';
 import { useCart } from '../contexts/CartContext';
-import useDataIntegrity from '../hooks/useDataIntegrity';
 
 const FavoritosPage = () => {
   const { favorites, removerFavorito } = useFavorites();
   const { cart, definirQuantidade, removerProduto } = useCart();
-
-  // Verifica integridade dos dados dos favoritos
-  useDataIntegrity(favorites);
 
   const handleQuantidadeChange = (produto: any, novaQuantidade: number) => {
     if (novaQuantidade === 0) {
