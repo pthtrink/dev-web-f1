@@ -50,7 +50,7 @@ const CardsPorSlugCategoriaPage = () => {
       next={() => fetchNextPage()}
       loader={<h6>Carregando...</h6>}
     >
-      <h5>
+      <h5 style={{ fontFamily: "F1-Regular" }}>
         {slugCategoria
           ? slugCategoria.charAt(0).toUpperCase() + slugCategoria.slice(1)
           : "Produtos"}

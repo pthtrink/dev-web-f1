@@ -25,8 +25,10 @@ const Pesquisa = () => {
         type="text"
         className="form-control form-control-sm me-3"
         placeholder="Informe o nome do produto..."
+        style={{ fontFamily: "F1-Regular", fontSize: "0.8em" }}
       />
-      <button type="submit" className="btn btn-primary btn-sm px-4">
+      <button type="submit" className="btn btn-primary btn-sm px-4"
+        style={{ fontFamily: "F1-Regular", fontSize: "0.7em" }}>
         Pesquisar
       </button>
     </form>

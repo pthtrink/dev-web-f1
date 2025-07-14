@@ -16,17 +16,6 @@ import isCategoriaValida from "../util/isCategoriaValida";
 import isDataValida from "../util/isDataValida";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-// interface ProdutoForm {
-//   nome: string;
-//   descricao: string;
-//   categoria: number;
-//   data_cadastro: string;
-//   preco: number;
-//   qtd_estoque: number;
-//   imagem: string;
-//   disponivel: boolean;
-// }
-
 const regexData = /^[0-9]{2}\/[0-9]{2}\/[0-9]{4}$/;
 const regexImagem = /^[a-z_]+\.(gif|jpg|png|bmp)$/;
 const schema = z.object({
@@ -183,53 +172,48 @@ const ProdutoForm = ({ produto }: Props) => {
     >
       <div className="row">
         <div className="col-sm-8">
-          <div className="row mb-2">
-            <label htmlFor="nome" className="col-xl-2 fw-bold">
+          <div className="form-group">
+            <label htmlFor="nome" style={{ fontFamily: "F1-Bold-4", fontSize: "0.8em" }}>
               Nome
             </label>
-            <div className="col-xl-10">
-              <input
-                {...register("nome")} // onChange, onBlur, name, ref
-                type="text"
-                id="nome"
-                className={errors.nome ? "form-control form-control-sm is-invalid" : "form-control form-control-sm"}
-              />
-              <div className="invalid-feedback">
-                {errors.nome?.message}
-              </div>
-              {/* {errors.nome && <p className="mt-1" style={{color: "red", fontSize: "14px", marginBottom: "0px"}}>{errors.nome.message}</p>} */}
-            </div>
+            <input
+              {...register("nome")}
+              type="text"
+              id="nome"
+              className={errors.nome ? "form-control is-invalid" : "form-control"}
+              style={{ fontFamily: "F1-Regular", fontSize: "0.8em" }}
+            />
+            <div className="invalid-feedback">{errors.nome?.message}</div>
           </div>
         </div>
         <div className="col-sm-4">
-          <div className="row mb-2">
-            <label htmlFor="categoria" className="col-xl-2 fw-bold">
+          <div className="form-group">
+            <label htmlFor="categoria" style={{ fontFamily: "F1-Bold-4", fontSize: "0.8em" }}>
               Categoria
             </label>
-            <div className="col-xl-10">
-              <select
-                {...register("categoria", {valueAsNumber: true})}
-                id="categoria"
-                className={errors.categoria ? "form-control form-control-sm is-invalid" : "form-control form-control-sm"}
-              >
-                <option value="0">Selecione uma categoria</option>
-                <option value="1">Boné</option>
-                <option value="2">Camisa Polo</option>
-                <option value="3">LEGO</option>
-                <option value="4">Calçado</option>
-              </select>
-              <div className="invalid-feedback">
-                {errors.categoria?.message}
-              </div>
-            </div>
+            <select
+              {...register("categoria", { valueAsNumber: true })}
+              id="categoria"
+              className={errors.categoria ? "form-select is-invalid" : "form-select"}
+              style={{ fontFamily: "F1-Regular", fontSize: "0.8em" }}
+            >
+              <option value="0">Selecione uma categoria</option>
+              <option value="1">Boné</option>
+              <option value="2">Camisa Polo</option>
+              <option value="3">LEGO</option>
+              <option value="4">Calçado</option>
+            </select>
+            <div className="invalid-feedback">{errors.categoria?.message}</div>
           </div>
         </div>
       </div>
 
-      <div className="row mb-1">
+      <div className="row mt-3">
         <div className="col-sm-4">
           <div className="form-group">
-            <label htmlFor="preco">Preço</label>
+            <label htmlFor="preco" style={{ fontFamily: "F1-Bold-4", fontSize: "0.8em" }}>
+              Preço
+            </label>
             <input
               {...register("preco")}
               type="number"
@@ -238,6 +222,7 @@ const ProdutoForm = ({ produto }: Props) => {
                 errors.preco ? "form-control is-invalid" : "form-control"
               }
               id="preco"
+              style={{ fontFamily: "F1-Regular", fontSize: "0.8em" }}
             />
             <div className="invalid-feedback">{errors.preco?.message}</div>
           </div>
@@ -245,7 +230,9 @@ const ProdutoForm = ({ produto }: Props) => {
 
         <div className="col-sm-4">
           <div className="form-group">
-            <label htmlFor="qtd_estoque">Quantidade em Estoque</label>
+            <label htmlFor="qtd_estoque" style={{ fontFamily: "F1-Bold-4", fontSize: "0.8em" }}>
+              Quantidade em Estoque
+            </label>
             <input
               {...register("qtd_estoque")}
               type="number"
@@ -253,6 +240,7 @@ const ProdutoForm = ({ produto }: Props) => {
                 errors.qtd_estoque ? "form-control is-invalid" : "form-control"
               }
               id="qtd_estoque"
+              style={{ fontFamily: "F1-Regular", fontSize: "0.8em" }}
             />
             <div className="invalid-feedback">
               {errors.qtd_estoque?.message}
@@ -262,7 +250,9 @@ const ProdutoForm = ({ produto }: Props) => {
 
         <div className="col-sm-4">
           <div className="form-group">
-            <label htmlFor="data_cadastro">Data de Cadastro</label>
+            <label htmlFor="data_cadastro" style={{ fontFamily: "F1-Bold-4", fontSize: "0.8em" }}>
+              Data de Cadastro
+            </label>
             <input
               {...register("data_cadastro")}
               type="text"
@@ -270,6 +260,7 @@ const ProdutoForm = ({ produto }: Props) => {
                 errors.data_cadastro ? "form-control is-invalid" : "form-control"
               }
               id="data_cadastro"
+              style={{ fontFamily: "F1-Regular", fontSize: "0.8em" }}
             />
             <div className="invalid-feedback">
               {errors.data_cadastro?.message}
@@ -278,10 +269,12 @@ const ProdutoForm = ({ produto }: Props) => {
         </div>
       </div>
 
-      <div className="row mb-1">
+      <div className="row mt-3">
         <div className="col-sm-8">
           <div className="form-group">
-            <label htmlFor="descricao">Descrição</label>
+            <label htmlFor="descricao" style={{ fontFamily: "F1-Bold-4", fontSize: "0.8em" }}>
+              Descrição
+              </label>
             <input
               {...register("descricao")}
               type="text"
@@ -289,6 +282,7 @@ const ProdutoForm = ({ produto }: Props) => {
                 errors.descricao ? "form-control is-invalid" : "form-control"
               }
               id="descricao"
+              style={{ fontFamily: "F1-Regular", fontSize: "0.8em" }}
             />
             <div className="invalid-feedback">
               {errors.descricao?.message}
@@ -298,7 +292,7 @@ const ProdutoForm = ({ produto }: Props) => {
 
         <div className="col-sm-4">
           <div className="form-group">
-            <label htmlFor="imagem">Nome da Imagem</label>
+            <label htmlFor="imagem" style={{ fontFamily: "F1-Bold-4", fontSize: "0.8em" }}>Nome da Imagem</label>
             <input
               {...register("imagem")}
               type="text"
@@ -306,6 +300,7 @@ const ProdutoForm = ({ produto }: Props) => {
                 errors.imagem ? "form-control is-invalid" : "form-control"
               }
               id="imagem"
+              style={{ fontFamily: "F1-Regular", fontSize: "0.8em" }}
             />
             <div className="invalid-feedback">{errors.imagem?.message}</div>
           </div>
@@ -317,7 +312,8 @@ const ProdutoForm = ({ produto }: Props) => {
               type="checkbox"
               id="disponivel"
             />
-            <label className="form-check-label" htmlFor="disponivel">
+            <label className="form-check-label" htmlFor="disponivel"
+              style={{ fontFamily: "F1-Regular", fontSize: "0.8em" }}>
               Disponível
             </label>
           </div>
@@ -328,9 +324,9 @@ const ProdutoForm = ({ produto }: Props) => {
         <button type="submit" className="btn btn-primary me-2">
           <img
             src={produto ? databaseEdit : databaseAdd}
-            alt=""
-            width={24}
+            width={16}
             className="me-2"
+            style={{ fontFamily: "F1-Regular", fontSize: "0.8em" }}
           />
           {produto ? "Alterar" : "Cadastrar"}
         </button>
@@ -338,8 +334,9 @@ const ProdutoForm = ({ produto }: Props) => {
           type="button"
           className="btn btn-primary"
           onClick={() => onCancelar()}
+          style={{ fontFamily: "F1-Regular", fontSize: "0.8em" }}
         >
-          <img src={databaseCancel} alt="" width={24} className="me-2" />
+          <img src={databaseCancel} width={16} className="me-2" />
           Cancelar
         </button>
       </div>

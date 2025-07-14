@@ -45,7 +45,7 @@ const TabelaDeProdutos = () => {
     <div className="table-responsive">
       <table className="table table-bordered table-sm table-hover table-striped">
         <thead>
-          <tr>
+          <tr style={{ fontFamily: "F1-Regular", fontSize: "0.8em" }}>
             <th className="text-center align-middle">Id</th>
             <th className="text-center align-middle">Imagem</th>
             <th className="text-center align-middle">Categoria</th>
@@ -56,7 +56,7 @@ const TabelaDeProdutos = () => {
             <th className="text-center align-middle">Ação</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody style={{ fontFamily: "F1-Regular", fontSize: "0.7em" }}>
           {produtos.map((produto) => (
             <tr key={produto.id}>
               <td width="8%" className="text-center align-middle">
@@ -99,6 +99,7 @@ const TabelaDeProdutos = () => {
                   onClick={() => tratarRemocao(produto.id!)}
                   className="btn btn-danger btn-sm"
                   type="button"
+                  style={{ fontSize: "0.8em" }}
                 >
                   Remover
                 </button>
@@ -107,8 +108,9 @@ const TabelaDeProdutos = () => {
           ))}
         </tbody>
         <tfoot>
-          <tr>
-            <td className="text-center align-middle fw-bold" colSpan={5}>
+          <tr style={{ fontFamily: "F1-Regular", fontSize: "0.8em" }}>
+            <td className="text-center align-middle fw-bold" colSpan={5}
+              >
               Total...
             </td>
             <td className="text-center align-middle fw-bold" colSpan={2}>

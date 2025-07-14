@@ -48,7 +48,7 @@ const Paginacao = () => {
   if (totalDePaginas < 2) return;
 
   return (
-    <nav aria-label="paginaco">
+    <nav aria-label="paginaco" style={{ fontFamily: "F1-Regular" }}>
       <ul className="pagination">
         <li className={pagina === 0 ? "page-item disabled" : "page-item"}>
           <a onClick={() => tratarPaginacao(pagina - 1)} className="page-link">

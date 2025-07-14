@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useLocation, useNavigate, NavLink } from "react-router-dom";
-import loginIcon from "../assets/skin/login.png";
 import useEfetuarLogin from "../hooks/useEfetuarLogin";
 import TokenResponse from "../interfaces/TokenResponse";
 import Usuario from "../interfaces/Usuario";
@@ -60,7 +59,8 @@ const LoginForm = () => {
 				</div>
 			)}
 			<div className="row mb-2">
-				<label htmlFor="conta" className="col-lg-1 fw-bold mb-2">
+				<label htmlFor="conta" className="col-lg-1 mb-2"
+					style={{ fontFamily: "F1-Bold-4" }}>
 					Conta
 				</label>
 				<div className="col-lg-5">
@@ -74,7 +74,8 @@ const LoginForm = () => {
 			</div>
 
 			<div className="row mb-3">
-				<label htmlFor="senha" className="col-lg-1 fw-bold mb-2">
+				<label htmlFor="senha" className="col-lg-1 mb-2"
+					style={{ fontFamily: "F1-Bold-4" }}>
 					Senha
 				</label>
 				<div className="col-lg-5">
@@ -89,8 +90,11 @@ const LoginForm = () => {
 
 			<div className="row">
 				<div className="offset-1 col-2">
-					<button type="submit" className="btn btn-outline-primary">
-						<img src={loginIcon} /> Entrar
+					<button type="submit" className="btn btn-outline-primary"
+						style={{ fontFamily: "F1-Regular", fontSize: "0.8em", whiteSpace: "nowrap" }}
+					>
+						<i className="bi bi-box-arrow-in-left me-2"></i> 
+						Entrar
 					</button>
 				</div>
 			</div>

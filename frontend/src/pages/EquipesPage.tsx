@@ -6,7 +6,7 @@ const EquipesPage = () => {
 		<>
 		<NavBar />
 		<div className="container">
-			<h4 id="equipes" style={{ fontFamily: 'F1-Wide', paddingTop: '0.5em' }}>EQUIPES</h4>
+			<h4 id="pilotos" style={{ fontFamily: 'F1-Wide', paddingTop: '0.5em', paddingBottom: '0.1em'}}>EQUIPES</h4>
 			<div className="row">
 					<div className="col-4 mb-4">
 						<a href="https://www.formula1.com/en/teams/McLaren.html" className="text-decoration-none">

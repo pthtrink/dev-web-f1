@@ -5,8 +5,11 @@ const Page2025 = () => {
   return (
     <>
       <NavBar />
-      <div className="container">
-			<h4 id="construtores" style={{fontFamily: "F1-Wide", paddingTop: "0.5em"}}>CLASSIFICAÇÃO DOS CONSTRUTORES <span className="badge bg-dark">NEW</span></h4>
+      <div className="mb-4">
+			<h5 id="construtores" style={{ fontFamily: "F1-Regular", fontSize: "2em" }}>
+				CLASSIFICAÇÃO DOS CONSTRUTORES
+				<span className="badge bg-dark">NEW</span>
+			</h5>
             <div className="accordion" id="accordion-equipes" style={{width: "50%"}}>
 				<div className="accordion-item">
 					<h2 className="accordion-header" id="mclarenHeader">
@@ -329,7 +332,10 @@ const Page2025 = () => {
 				</div>
             </div>
 			<div className="container">
-				<h4 id="pilotos" style={{ fontFamily: "F1-Wide", paddingTop: "5em" }}>CLASSIFICAÇÃO DOS PILOTOS</h4>
+				<h5 id="construtores" style={{ fontFamily: "F1-Regular", fontSize: "2em", paddingTop: "1em" }}>
+				CLASSIFICAÇÃO DOS PILOTOS
+				<span className="badge bg-dark">NEW</span>
+			</h5>
 				<h4 style={{ fontFamily: "F1-Regular", paddingTop: "0.5em" }}>EM CONSTRUÇÃO</h4>
 			</div>
     	</div>

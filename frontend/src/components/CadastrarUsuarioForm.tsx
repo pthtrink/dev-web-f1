@@ -5,6 +5,7 @@ import Usuario from "../interfaces/Usuario";
 import useCadastrarUsuario from "../hooks/useCadastrarUsuario";
 import { useState } from "react";
 import { AxiosError } from 'axios';
+import databaseAdd from "../assets/skin/database_add.png";
 
 const cadastrarUsuarioSchema = z
 	.object({
@@ -75,7 +76,8 @@ const CadastrarUsuarioForm = () => {
 			)}
 			<form autoComplete="off" onSubmit={handleSubmit(submit)}>
 				<div className="row mb-2">
-					<label htmlFor="conta" className="col-lg-2 fw-bold mb-2">
+					<label htmlFor="conta" className="col-lg-2 mb-2"
+						style={{ fontFamily: "F1-Bold-4" }}>
 						Conta (e-mail)
 					</label>
 					<div className="col-lg-5">
@@ -92,7 +94,8 @@ const CadastrarUsuarioForm = () => {
 				</div>
 
 				<div className="row mb-2">
-					<label htmlFor="senha" className="col-lg-2 fw-bold mb-2">
+					<label htmlFor="senha" className="col-lg-2 mb-2"
+						style={{ fontFamily: "F1-Bold-4" }}>
 						Senha
 					</label>
 					<div className="col-lg-5">
@@ -110,7 +113,8 @@ const CadastrarUsuarioForm = () => {
 					</div>
 				</div>
 				<div className="row mb-2">
-					<label htmlFor="confirmacaoSenha" className="col-lg-2 fw-bold mb-2">
+					<label htmlFor="confirmacaoSenha" className="col-lg-2 mb-2"
+						style={{ fontFamily: "F1-Bold-4" }}>
 						Confirme a Senha
 					</label>
 					<div className="col-lg-5">
@@ -135,8 +139,9 @@ const CadastrarUsuarioForm = () => {
 						<button
 							type="submit"
 							className="btn btn-outline-primary"
-							style={{ whiteSpace: "nowrap" }}
+							style={{ fontFamily: "F1-Regular", fontSize: "0.8em", whiteSpace: "nowrap" }}
 						>
+							<i className="bi bi-database-add me-2"></i> 
 							Cadastrar-se
 						</button>
 					</div>

@@ -25,22 +25,27 @@ const Card = ({ produto, adicionarProduto, subtrairProduto, produtoNoCarrinho }:
 
   return (
     <div className="card h-100 border-0">
-      <div className="position-relative">
-        <img src={produto.imagem} className="card-img-top" alt={produto.nome} />
+      <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
+        <div>
+          <img src={produto.imagem} className="card-img-top" alt={produto.nome} />
+        </div>
         {usuarioLogado > 0 && (
           <button 
             onClick={toggleFavorito}
-            className={`btn btn-sm position-absolute top-0 end-0 m-2 ${ehFavorito ? 'btn-danger' : 'btn-outline-danger'}`}
-            style={{ border: 'none', borderRadius: '50%', width: '35px', height: '35px' }}
+            className={`btn`}
+            style={{background: 'transparent', border: 'none', padding: '0', width: '35px', height: '35px'}}
           >
-            {ehFavorito ? '❤️' : '🤍'}
+            {ehFavorito
+              ? (<i className="bi bi-heart-fill" style={{ fontSize: '1.2rem', color: 'red' }}></i>)
+              : (<i className="bi bi-heart" style={{ fontSize: '1.2rem', color: 'black' }}></i> )
+            }
           </button>
         )}
       </div>
       <div className="card-body">
-        <h5 className="card-title">{produto.nome}</h5>
-        <p className="card-text">{produto.descricao}</p>
-        <p className="card-text fw-bold" style={{color: "rgb(220,60,60)"}}>
+        <h5 className="card-title" style={{ fontFamily: "F1-Regular" }}>{produto.nome}</h5>
+        <p className="card-text" style={{ fontFamily: "F1-Italic", fontSize: "0.8em" }}>{produto.descricao}</p>
+        <p className="card-text" style={{ fontFamily: "F1-Regular", color: "rgb(220,60,60)" }}>
           R${" "}
           {produto.preco.toLocaleString("pt-BR", {
             minimumFractionDigits: 2,
@@ -49,7 +54,7 @@ const Card = ({ produto, adicionarProduto, subtrairProduto, produtoNoCarrinho }:
           })}
         </p>
       </div>
-      <div className="card-footer p-0 mb-4">
+      <div className="card-footer p-0 mb-4" style={{ fontFamily: "F1-Regular" }}>
         <div style={produtoNoCarrinho ? {display: "block"} : {display: "none"}} >
           <div className="btn-group w-100">
             <button onClick={() => subtrairProduto(produto)} type="button" className="btn btn-secondary btn-sm">-</button>
@@ -57,7 +62,11 @@ const Card = ({ produto, adicionarProduto, subtrairProduto, produtoNoCarrinho }:
             <button onClick={() => adicionarProduto(produto)} type="button" className="btn btn-secondary btn-sm">+</button>
           </div>
         </div>
-        <button style={produtoNoCarrinho ? {display: "none"} : {display: "block"}} onClick={() => adicionarProduto(produto)} type="button" className="btn btn-success btn-sm w-100">Comprar</button>
+        <button style={produtoNoCarrinho ? {display: "none"} : {display: "block"}}
+          onClick={() => adicionarProduto(produto)} type="button"
+          className="btn btn-success btn-sm w-100">
+            Comprar
+        </button>
       </div>
     </div>
   );

@@ -81,14 +81,12 @@ const NavBar = () => {
 					</ul>
 					
 					<ul className="navbar-nav ms-auto">
-						{usuarioLogado > 0 && (
-							<li className="nav-item" style={{fontFamily: "F1-Regular",
-								fontSize: "0.9em", textAlign: "center" }}>
-								<NavLink className="nav-link" to="/favoritos">
-									<i className="bi bi-heart"></i>
-								</NavLink>
-							</li>
-						)}
+						<li className="nav-item" style={{fontFamily: "F1-Regular",
+							fontSize: "0.9em", textAlign: "center" }}>
+							<NavLink className="nav-link" to="/favoritos">
+								<i className="bi bi-heart"></i>
+							</NavLink>
+						</li>
 						<li className="nav-item" style={{fontFamily: "F1-Regular",
 							fontSize: "0.9em", textAlign: "center" }}>
 							<NavLink className="nav-link" to="/carrinho">
@@ -125,20 +123,13 @@ const NavBar = () => {
 								<button 
 									className="nav-link"
 									onClick={handleLogout}
-									style={{ 
-										border: 'none', 
-										background: 'none', 
-										color: 'white',
-										padding: '0.5rem 1rem',
-										cursor: 'pointer'
-									}}
-									title="Sair"
+									
 								>
-									🚪
+									Deslogar
 								</button>
 							) : (
-								<NavLink className="nav-link" to="/login" title="Entrar">
-									🔑
+								<NavLink className="nav-link" to="/login">
+									Logar
 								</NavLink>
 							)}
 						</li>

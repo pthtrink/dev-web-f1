@@ -8,19 +8,19 @@ const HomePage = () => {
 				<div className="col-lg-2">
 					<nav className="nav nav-pills d-flex flex-column">
 						<h5 style={{ fontFamily: "F1-Regular" }}>Categorias</h5>
-						<NavLink className="nav-link" to="/" style={{ fontFamily: "F1-Bold-Web" }} aria-current="page">
+						<NavLink className="nav-link" to="/" style={{ fontFamily: "F1-Bold-4" }} aria-current="page">
 							Todos
 						</NavLink>
-						<NavLink className="nav-link" to="/bones" style={{ fontFamily: "F1-Bold-Web" }}>
+						<NavLink className="nav-link" to="/bones" style={{ fontFamily: "F1-Bold-4" }}>
 							Bonés
 						</NavLink>
-						<NavLink className="nav-link" to="/polos" style={{ fontFamily: "F1-Bold-Web" }}>
+						<NavLink className="nav-link" to="/polos" style={{ fontFamily: "F1-Bold-4" }}>
 							Camisas Polo
 						</NavLink>
-						<NavLink className="nav-link" to="/legos" style={{ fontFamily: "F1-Bold-Web" }}>
+						<NavLink className="nav-link" to="/legos" style={{ fontFamily: "F1-Bold-4" }}>
 							LEGO
 						</NavLink>
-						<NavLink className="nav-link" to="/calcados" style={{ fontFamily: "F1-Bold-Web" }}>
+						<NavLink className="nav-link" to="/calcados" style={{ fontFamily: "F1-Bold-4" }}>
 							Calçados
 						</NavLink>
 					</nav>
